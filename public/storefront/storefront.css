@@ -1,0 +1,19 @@
+.storeFront {
+    font-size: 1.75rem;
+}
+
+.home-hero {
+	background-image: url();
+	background-size: cover;
+	background-position: center;
+  	background-attachment: fixed;
+	padding: 20em 0;
+	z-index: -1;
+}
+
+.title {
+	font-size: 3rem;
+	font-weight: 200;
+	position: relative;
+    top: 1em;
+}

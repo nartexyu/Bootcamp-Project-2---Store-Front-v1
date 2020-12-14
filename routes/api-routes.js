@@ -17,7 +17,8 @@ module.exports = function(app) {
       res.send("Success");
     });
 
-    app.post("/upload-image", (req, res) => {
+    app.post("/api/uploadimage", (req, res) => {
+      console.log("This is working");
       const data = {
         image: req.body.image,
       };
@@ -26,6 +27,7 @@ module.exports = function(app) {
           message: "success",
           result
         });
+        console.log(result.url);
       }).catch(error => {
         res.status(500).send({
           message: "failure",

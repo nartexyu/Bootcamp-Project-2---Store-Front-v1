@@ -1,17 +1,23 @@
 const express = require("express");
-const dotenv = require("dotenv").config();
-const exphbs = require("express-handlebars");
+const session = require("express-session");
+const passport = require("./config/passport");
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
+const db = require("./models");
+
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 
-app.listen(PORT, function() {
-    console.log("App now listening at localhost:" + PORT);
+app.use(passport.initialize());
+app.use(passport.session());
+
+db.sequelize.sync().then(function() {
+    app.listen(PORT, function() {
+        console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+    });
 });

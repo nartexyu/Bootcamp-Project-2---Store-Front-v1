@@ -5,13 +5,40 @@ const { uploader, cloudinaryConfig } = require("../config/middleware/cloudinaryC
 const { multerUploads, dataUri } = require("../config/middleware/multer");
 
 module.exports = function(app) {
-    app.post("/api/login", passport.authenticate("local"), function(req, res) {
+
+    app.post("/api/login", passport.authenticate("local"), (req, res) => {
         res.json(req.user);
     });
 
-    app.get("/", (req, res) => {
-      res.sendFile(path.join(__dirname, "../test.html"));
+    app.post("/api/signup", (req, res) => {
+      db.User.create({
+        email: req.body.email,
+        password: req.body.password,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name
+      })
+        .then(function() {
+          res.redirect(307, "/api/login");
+        })
+        .catch(function(err) {
+          res.status(401).json(err);
+        });
     });
+
+    app.post("/api/store", (req, res) => {
+      db.Store.create({
+        store_name: req.body.store_name,
+        owner_first_name: req.body.first_name,
+        owner_last_name: req.body.last_name,
+        address: req.body.address,
+        email: req.body.email,
+        font: req.body.font,
+        background_image: req.body.background_image,
+        about: req.body.about,
+        about_image: req.body.about_image,
+        accent_color: req.body.accent_color
+      })
+    })
 
     app.use("*", cloudinaryConfig);
 

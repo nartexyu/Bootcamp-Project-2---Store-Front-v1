@@ -7,17 +7,25 @@
 </head>
 <body>
     <form id="upload">
-        <input type="file" id="photo">
+        <input type="file" name="photo" id="photo">
         <button type="submit">Upload Photo</button>
     </form>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script>
         $("#upload").on("submit", event => {
             event.preventDefault();
-            const image = $("#photo").val();
-            console.log(image);
-            $.post("/single", {
-                image: image
+            // var file = $("#photo")[0].files[0];
+            // console.log(file);
+            var formData = new FormData($('#upload')[0]);
+            formData.append('tax_file', $('#photo')[0].files[0]);
+            console.log(formData);
+            // const image = $("#photo").val();
+            // console.log(image);
+            $.ajax({
+                url: "/api/uploadimage",
+                type: "POST",
+                data: formData,
+                enctype: "multipart/form-data"
             }).then(data => {
                 console.log("Success");
             })

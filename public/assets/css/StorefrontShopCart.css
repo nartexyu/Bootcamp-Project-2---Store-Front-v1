@@ -3,7 +3,7 @@ html, body {
 	margin: 0;
 }
 
-.nav, .nav-item, .nav-link, a, footer {
+.nav, .nav-item, .nav-link, footer {
 	color: white;
 }
 
@@ -62,16 +62,7 @@ header {
 	background-color: rgba(229,229,229, 0.75);
 }
 
-.popular {
-	margin: 3em 0 0;
-  color: #006600;
-}
-.pop-item {
-	margin: 0;
-	position: relative;
-}
-.pop-item img {
-	display: inline-table;
+/* .pop-item img {
 	transition: ease-in-out 500ms;
 	opacity: 100%
 }
@@ -79,7 +70,6 @@ header {
 	position: relative;
 	text-align: center;
 	font-size: 1.5em;
-	margin: 0.5em;
 	bottom: 0em;
 	left: 0em;
 	right: 0em;
@@ -91,7 +81,7 @@ header {
 }
 .pop-item img:hover ~ .pop-desc{
 	opacity: 70%;
-}
+} */
 
 .about {
 	height: 85vh;

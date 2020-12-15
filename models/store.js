@@ -49,5 +49,12 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: "cascade"
         });
     };
+    Store.associate = models => {
+        Store.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
     return Store;
 };

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="upload">
+        <input type="file" id="photo">
+        <button type="submit">Upload Photo</button>
+    </form>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script>
+        $("#upload").on("submit", event => {
+            event.preventDefault();
+            const image = $("#photo").val();
+            console.log(image);
+            $.post("/single", {
+                image: image
+            }).then(data => {
+                console.log("Success");
+            })
+        });
+    </script>
+</body>
+</html>

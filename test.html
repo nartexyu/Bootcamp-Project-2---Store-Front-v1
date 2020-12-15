@@ -7,7 +7,7 @@
 </head>
 <body>
     <form id="upload">
-        <input type="file" name="photo" id="photo">
+        <input type="file" name="file" id="photo">
         <button type="submit">Upload Photo</button>
     </form>
     <script src="https://code.jquery.com/jquery.js"></script>
@@ -16,16 +16,21 @@
             event.preventDefault();
             // var file = $("#photo")[0].files[0];
             // console.log(file);
-            var formData = new FormData($('#upload')[0]);
-            formData.append('tax_file', $('#photo')[0].files[0]);
-            console.log(formData);
+            var files = $('#photo')[0].files;
+            var fd = new FormData();
+        console.log(files)
+        // Check file selected or not
+        fd.append('file', $('input[type=file]')[0].files[0]);
+            console.log(fd);
             // const image = $("#photo").val();
             // console.log(image);
             $.ajax({
-                url: "/api/uploadimage",
+                url: "/upload",
                 type: "POST",
-                data: formData,
-                enctype: "multipart/form-data"
+                data: fd,
+                enctype: "multipart/form-data",
+                processData: false,
+                contentType: false,
             }).then(data => {
                 console.log("Success");
             })

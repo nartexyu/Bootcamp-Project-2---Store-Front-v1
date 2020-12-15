@@ -4,7 +4,7 @@ const path = require("path");
 const storage = multer.memoryStorage();
 const util = require("util");
 const parser = new Datauri();
-const multerUploads = multer({ storage }).single('image');
+const multerUploads = multer({ storage }).single('file');
 // const getContent = async (req) => {
 //     await parser.format(req.file.buffer)
 // }

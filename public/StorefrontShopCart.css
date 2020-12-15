@@ -1,0 +1,117 @@
+html, body {
+	height: 100vh;
+	margin: 0;
+}
+
+.nav, .nav-item, .nav-link, a, footer {
+	color: white;
+}
+
+body {
+	color: black;
+}
+
+header {
+	width: 100%;
+	z-index: 100;
+}
+
+.storeFront {
+    font-size: 1.75rem;
+}
+
+.background {
+	height: 100%;
+	width: 100%;
+	background-image: url(https://placehold.it/1920x1080);
+	background-size: 100%;
+	background-position: center;
+  	background-attachment: fixed;
+	position: static;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: -1;
+	color: white;
+}
+
+.description {
+	padding: 9.25em;
+	font-size: 3rem;
+	font-weight: 200;
+}
+
+.button {
+	display: inline-block;
+	font-size: 1.5rem;
+	text-decoration: none;
+	text-transform: lowercase;
+	background-color: white;
+	border-width: 0.1rem;
+	border-style: hidden;
+	padding: .5em 1.5em;
+	color: black;
+	z-index: 100;
+	transition: background-color 500ms;
+}
+
+.button:hover,
+.button:focus {
+  	color: white;
+	background-color: rgba(229,229,229, 0.75);
+}
+
+.popular {
+	margin: 3em 0 0;
+  color: #006600;
+}
+.pop-item {
+	margin: 0;
+	position: relative;
+}
+.pop-item img {
+	display: inline-table;
+	transition: ease-in-out 500ms;
+	opacity: 100%
+}
+.pop-desc {
+	position: relative;
+	text-align: center;
+	font-size: 1.5em;
+	margin: 0.5em;
+	bottom: 0em;
+	left: 0em;
+	right: 0em;
+	color: #005500;
+  	transition: ease-in-out 500ms, color 0ms, font-weight 0ms, font-size 0ms, margin 0ms;
+}
+.pop-item img:hover {
+	opacity: 70%;
+}
+.pop-item img:hover ~ .pop-desc{
+	opacity: 70%;
+}
+
+.about {
+	height: 85vh;
+	width: auto;
+	background-image: url(https://placehold.it/1920x1080);
+	background-size: 100%;
+	background-position: center;
+  	background-attachment: scroll;
+	position: static;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: -1;
+	color: white;
+}
+
+footer {
+	position: static;
+  	bottom: 0;
+	width:100%; 
+	background: black;
+}

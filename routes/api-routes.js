@@ -1,12 +1,8 @@
 const db = require("../models");
 const passport = require("../config/passport");
-const cloudinary = require("cloudinary").v2;
-
-cloudinary.config({
-  cloud_name: process.env.cloudname,
-  api_key: process.env.apikey,
-  api_secret: process.env.secret
-});
+const { resolve } = require("path");
+const { uploader, cloudinaryConfig } = require("../config/middleware/cloudinaryConfig");
+const { multerUploads, dataUri } = require("../config/middleware/multer");
 
 module.exports = function(app) {
     app.post("/api/login", passport.authenticate("local"), function(req, res) {
@@ -14,15 +10,36 @@ module.exports = function(app) {
     });
 
     app.get("/", (req, res) => {
-      res.send("Success");
+      res.sendFile(path.join(__dirname, "../test.html"));
+    });
+
+    app.use("*", cloudinaryConfig);
+
+    app.post("/upload", multerUploads, (req, res) => {
+      if (req.file) {
+        const file = dataUri(req).content;
+        return uploader.upload(file).then(result => {
+          const image = result.url;
+          return res.status(200).json({
+            message: "Your image has been uploaded successfully",
+            data: {
+              image
+            }
+          })
+        }).catch(err => res.status(400).json({
+          message: "Something went wrong while processing your request",
+          data: {
+            err
+          }
+        }));
+      };
     });
 
     app.post("/api/uploadimage", (req, res) => {
-      console.log("This is working");
       const data = {
         image: req.body.image,
       };
-      cloudinary.uploader.upload(data.image).then(result => {
+      uploader.upload(data.image).then(result => {
         res.status(200).send({
           message: "success",
           result

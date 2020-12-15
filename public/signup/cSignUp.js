@@ -11,6 +11,7 @@ $("#signUp").on("submit", event => {
     };
 
     $.post("/api/signup", userInfo).then(() => {
-        console.log("Success! Check your database!");
+        console.log("Success! Created new user.");
+        window.location.replace("/storefront");
     });
 });

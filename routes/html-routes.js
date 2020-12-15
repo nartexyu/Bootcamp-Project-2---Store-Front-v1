@@ -7,6 +7,14 @@ module.exports = app => {
     });
 
     app.get("/signup", (req, res) => {
-        res.sendFile(path.join(__dirname, "../public/signup/cSignUp.html"))
-    })
-}
+        res.sendFile(path.join(__dirname, "../public/signup/cSignUp.html"));
+    });
+
+    app.get("/login", (req, res) => {
+        res.sendFile(path.join(__dirname, "../public/index/index.html"));
+    });
+
+    app.get("/storefront", (req, res) => {
+        res.sendFile(path.join(__dirname, "../public/storefront/storefront.html"));
+    });
+};

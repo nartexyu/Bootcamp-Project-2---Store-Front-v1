@@ -6,7 +6,7 @@ const { multerUploads, getContent } = require("../config/middleware/multer");
 module.exports = function(app) {
 
     app.post("/api/login", passport.authenticate("local"), (req, res) => {
-        res.json(req.user);
+      res.json(req.user);
     });
 
     app.post("/api/signup", (req, res) => {
@@ -20,7 +20,7 @@ module.exports = function(app) {
           res.redirect(307, "/api/login");
         })
         .catch(function(err) {
-          res.status(401).json(err);
+          console.log(err);
         });
     });
 

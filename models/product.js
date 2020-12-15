@@ -1,5 +1,3 @@
-const post = require("../../../class-activities/14-Full-Stack/01-Activities/12-Blog-CRUD/Unsolved/models/post");
-
 module.exports = (sequelize, DataTypes) => {
     const Product = sequelize.define("Product", {
         name: {

@@ -25,8 +25,17 @@ module.exports = (sequelize, DataTypes) => {
         cart: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+        isSeller: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
         }
     });
+    User.associate = models => {
+        User.hasOne(models.Store, {
+            onDelete: "cascade"
+        });
+    };
     User.prototype.validPassword = function(password) {
         return bcrypt.compareSync(password, this.password);
     };

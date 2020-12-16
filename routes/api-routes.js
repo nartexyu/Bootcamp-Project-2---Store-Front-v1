@@ -25,19 +25,22 @@ module.exports = function(app) {
     });
 
     app.post("/api/store", (req, res) => {
+      console.log(req.body);
       db.Store.create({
         store_name: req.body.store_name,
-        owner_first_name: req.body.first_name,
-        owner_last_name: req.body.last_name,
         address: req.body.address,
-        email: req.body.email,
         font: req.body.font,
         background_image: req.body.background_image,
         about: req.body.about,
         about_image: req.body.about_image,
-        accent_color: req.body.accent_color
+        accent_color: req.body.accent_color,
+        UserId: req.body.UserID
+      }).then(result => {
+        res.json(result);
       });
     });
+
+    // app.get("/api/store/:store", )
 
     app.use("*", cloudinaryConfig);
 

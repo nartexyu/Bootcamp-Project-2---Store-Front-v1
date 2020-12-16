@@ -4,24 +4,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        owner_first_name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        owner_last_name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
         address: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isEmail: true
-            }
         },
         font: {
             type: DataTypes.STRING,
@@ -48,8 +33,6 @@ module.exports = (sequelize, DataTypes) => {
         Store.hasMany(models.Product, {
             onDelete: "cascade"
         });
-    };
-    Store.associate = models => {
         Store.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false

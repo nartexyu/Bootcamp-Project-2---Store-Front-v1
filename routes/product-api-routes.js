@@ -16,14 +16,36 @@ module.exports = app => {
   });
 
   // Get route for all products and their parent store
-  app.get("/api/product", (req, res) => {
+  app.get("/api/storeproducts/:storeId", (req, res) => {
       db.Product.findAll({
+          where: {
+            StoreId: req.params.storeId
+          },
           order: [
               ["popularity", 'DESC']
           ],
           include: [db.Store]
       }).then(result => {
-        res.json(result);
+        let data = {
+          store: result[0].Store.store_name,
+          address: result[0].Store.address,
+          font: result[0].Store.font,
+          font_color: result[0].Store.font_color,
+          body_color: result[0].Store.body_color,
+          accent_color: result[0].Store.accent_color
+        };
+        let products = [];
+        result.forEach(product => {
+          let item = {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image
+          };
+          products.push(item);
+        });
+        data.products = products;
+        res.render("shop", data);
       });
   });
 

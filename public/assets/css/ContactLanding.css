@@ -1,0 +1,45 @@
+html, body {
+	height: 100vh;
+	margin: 0;
+	scroll-behavior: smooth;
+}
+
+body {
+	color: black;
+}
+
+header {
+	width: 100%;
+	z-index: 100;
+}
+
+a {
+	color: black;
+}
+
+a:hover {
+	transition: color 500ms;
+	color: grey;
+	text-decoration: none;
+}
+
+.button-color{
+	background-color: black;
+	color: white;
+}
+
+.storeFront {
+    font-size: 1.75rem;
+}
+
+footer {
+	position: static;
+  	bottom: 0;
+	width:100%; 
+	background: black;
+	color: white;
+}
+
+footer a {
+	color: white;
+}

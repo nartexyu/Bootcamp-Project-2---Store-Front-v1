@@ -18,7 +18,10 @@ module.exports = app => {
     // Get route for all products and their parent store
     app.get("/api/product", (req, res) => {
         db.Product.findAll({
-          include: [db.Store]
+            order: [
+                ["popularity", 'DESC']
+            ],
+            include: [db.Store]
         }).then(result => {
           res.json(result);
         });

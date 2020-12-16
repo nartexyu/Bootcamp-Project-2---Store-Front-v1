@@ -5,7 +5,10 @@ module.exports = app => {
     // Get route for all stores and their products
     app.get("/api/store", (req, res) => {
         db.Store.findAll({
-          include: [db.Product]
+          include: [db.Product],
+          order: [
+              [db.Product, "popularity", "DESC"]
+          ]
         }).then(result => {
           res.json(result);
         });
@@ -17,14 +20,26 @@ module.exports = app => {
           where: {
             id: req.params.id
           },
-          include: [db.Product]
+          include: [db.Product],
+          order: [
+              [db.Product, "popularity", "DESC"]
+          ]
         }).then(result => {
           res.render("storefront", {
+            font: result.font,
+            background_image: result.background_image,
             store_name: result.store_name,
-            productImage: result.Products[0].image,
-            productName: result.Products[0].name,
+            productImage1: result.Products[0].image,
+            productName1: result.Products[0].name,
+            productImage2: result.Products[1].image,
+            productName2: result.Products[1].name,
+            productImage3: result.Products[2].image,
+            productName3: result.Products[2].name,
             about: result.about,
-            address: result.address
+            about_image: result.about_image,
+            address: result.address,
+            font_color: result.font_color,
+            accent_color: result.accent_color
           });
         });
     });

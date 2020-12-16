@@ -24,9 +24,13 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             defaultValue: "https://placehold.it/1920x1080"
         },
+        font_color: {
+            type: DataTypes.STRING,
+            defaultValue: "black"
+        },
         accent_color: {
             type: DataTypes.STRING,
-            allowNull: true
+            defaultValue: "white"
         }
     });
     Store.associate = models => {

@@ -44,6 +44,11 @@ header {
 	color: white;
 }
 
+.product {
+	height: 300px;
+	width: 250px;
+}
+
 .description {
 	padding: 9.25em;
 	font-size: 3rem;
@@ -115,9 +120,5 @@ footer {
   	bottom: 0;
 	width:100%; 
 	background: black;
-	color: white;
-}
-
-footer a {
 	color: white;
 }

@@ -1,3 +1,25 @@
+<style>
+    body {
+        font-family: {{ font }};
+    }
+
+    .nav, .nav-item, .nav-link, .button, footer, footer a {
+        color: {{ font_color }};
+    }
+
+    .button, footer {
+        background-color: {{ accent_color }};
+    }
+
+    .background {
+        background-image: url({{ background_image }});
+    }
+
+    .about {
+        background-image: url({{ about_image }});
+    }
+</style>
+
 <a name="#"></a>
 
     <header class="p-5 header position-absolute">
@@ -56,24 +78,24 @@
              
             <div class="col-4">
                 <figure class="text-center pop-item">
-                    <a href='#' ><img src="{{ productImage }}" alt="popular item">
-                        <div class="pop-desc">{{ productName }}</div>
+                    <a href='#' ><img src="{{ productImage1 }}" class="product" alt="popular item">
+                        <div class="pop-desc">{{ productName1 }}</div>
                     </a>
                 </figure>
             </div>
             
             <div class="col-4">
                 <figure class="text-center pop-item">
-                    <a href='#' ><img src="https://placehold.it/300x400" alt="popular item">
-                        <div class="pop-desc">product name</div>
+                    <a href='#' ><img src="{{ productImage2 }}" class="product" alt="popular item">
+                        <div class="pop-desc">{{ productName2 }}</div>
                     </a>
                 </figure>
             </div>
         
             <div class="col-4">
                 <figure class="text-center pop-item">
-                    <a href='#' ><img src="https://placehold.it/300x400" alt="popular item">
-                        <div class="pop-desc">product name</div>
+                    <a href='#' ><img src="{{ productImage3 }}" class="product" alt="popular item">
+                        <div class="pop-desc">{{ productName3 }}</div>
                     </a>
                 </figure>
             </div>

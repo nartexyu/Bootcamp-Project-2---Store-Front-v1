@@ -3,14 +3,22 @@ const db = require("../models");
 module.exports = app => {
 
     // Get route for all stores and their products
-    app.get("/api/store", (req, res) => {
+    app.get("/landing", (req, res) => {
         db.Store.findAll({
           include: [db.Product],
           order: [
               [db.Product, "popularity", "DESC"]
           ]
         }).then(result => {
-          res.json(result);
+          let data = [];
+          result.forEach(store => {
+            let info = {
+              store: store.store_name,
+              image: store.Products[0].image 
+            };
+            data.push(info);
+          });
+          res.render("landing", {data: data});
         });
       });
   

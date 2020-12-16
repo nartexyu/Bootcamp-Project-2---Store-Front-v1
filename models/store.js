@@ -4,24 +4,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        owner_first_name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        owner_last_name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
         address: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isEmail: true
-            }
         },
         font: {
             type: DataTypes.STRING,
@@ -29,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         background_image: {
             type: DataTypes.STRING,
-            allowNull: true
+            defaultValue: "https://placehold.it/1920x1080"
         },
         about: {
             type: DataTypes.TEXT,
@@ -37,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         about_image: {
             type: DataTypes.STRING,
-            allowNull: true
+            defaultValue: "https://placehold.it/1920x1080"
         },
         accent_color: {
             type: DataTypes.STRING,
@@ -48,8 +33,6 @@ module.exports = (sequelize, DataTypes) => {
         Store.hasMany(models.Product, {
             onDelete: "cascade"
         });
-    };
-    Store.associate = models => {
         Store.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false

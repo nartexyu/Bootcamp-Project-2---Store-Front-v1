@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="upload">
+        <input type="file" name="file" id="photo">
+        <select id="image-type">
+            <option value="product">Product</option>
+            <option value="background">Background</option>
+            <option value="about-background">About Section Background</option>
+        </select>
+        <button type="submit">Upload Photo</button>
+    </form>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script>
+        $("#upload").on("submit", event => {
+            event.preventDefault();
+            var files = $('#photo')[0].files;
+            var fd = new FormData();
+            console.log(files)
+            fd.append('file', $('input[type=file]')[0].files[0]);
+            console.log(fd);
+            const imageType = $("#image-type").val();
+            $.ajax({
+                url: "/upload/" + imageType,
+                type: "POST",
+                data: fd,
+                enctype: "multipart/form-data",
+                processData: false,
+                contentType: false,
+            }).then(data => {
+                console.log("Success");
+            })
+        });
+    </script>
+</body>
+</html>

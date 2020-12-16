@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         font: {
             type: DataTypes.STRING,
-            defaultValue: "Times New Roman"
+            defaultValue: "Helvetica Neue"
         },
         background_image: {
             type: DataTypes.STRING,
@@ -27,6 +27,10 @@ module.exports = (sequelize, DataTypes) => {
         font_color: {
             type: DataTypes.STRING,
             defaultValue: "black"
+        },
+        body_color: {
+            type: DataTypes.STRING,
+            defaultValue: "gray"
         },
         accent_color: {
             type: DataTypes.STRING,

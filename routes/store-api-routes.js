@@ -39,6 +39,7 @@ module.exports = app => {
             about_image: result.about_image,
             address: result.address,
             font_color: result.font_color,
+            body_color: result.body_color,
             accent_color: result.accent_color
           });
         });

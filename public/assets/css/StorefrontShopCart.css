@@ -1,14 +1,22 @@
 html, body {
 	height: 100vh;
 	margin: 0;
+	scroll-behavior: smooth;
 }
 
-.nav, .nav-item, .nav-link, footer {
-	color: white;
+.nav, .nav-item, .nav-link {
+	color: black;
 }
 
 body {
 	color: black;
+}
+
+
+a:hover {
+	transition: color 500ms;
+	color: grey;
+	text-decoration: none;
 }
 
 header {
@@ -53,12 +61,11 @@ header {
 	padding: .5em 1.5em;
 	color: black;
 	z-index: 100;
-	transition: background-color 500ms;
 }
 
 .button:hover,
 .button:focus {
-  	color: white;
+	transition: background-color 500ms;
 	background-color: rgba(229,229,229, 0.75);
 }
 
@@ -83,6 +90,10 @@ header {
 	opacity: 70%;
 } */
 
+.pop-item a {
+	color: black;
+}
+
 .about {
 	height: 85vh;
 	width: auto;
@@ -104,4 +115,9 @@ footer {
   	bottom: 0;
 	width:100%; 
 	background: black;
+	color: white;
+}
+
+footer a {
+	color: white;
 }

@@ -69,7 +69,13 @@ module.exports = function(app) {
         },
         include: [db.Product]
       }).then(result => {
-        res.json(result);
+        res.render("storefront", {
+          store_name: result.store_name,
+          productImage: result.Products[0].image,
+          productName: result.Products[0].name,
+          about: result.about,
+          address: result.address
+        });
       });
     });
 

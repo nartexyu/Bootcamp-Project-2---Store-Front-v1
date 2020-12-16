@@ -3,14 +3,22 @@ const db = require("../models");
 module.exports = app => {
 
     // Get route for all stores and their products
-    app.get("/api/store", (req, res) => {
+    app.get("/landing", (req, res) => {
         db.Store.findAll({
           include: [db.Product],
           order: [
               [db.Product, "popularity", "DESC"]
           ]
         }).then(result => {
-          res.json(result);
+          let data = [];
+          result.forEach(store => {
+            let info = {
+              store: store.store_name,
+              image: store.Products[0].image 
+            };
+            data.push(info);
+          });
+          res.render("landing", {data: data});
         });
       });
   
@@ -39,20 +47,34 @@ module.exports = app => {
             about_image: result.about_image,
             address: result.address,
             font_color: result.font_color,
+            body_color: result.body_color,
             accent_color: result.accent_color
           });
         });
+    });
+
+    app.get("/contact/:id", (req, res) => {
+      db.Store.findOne({
+        where: {
+          id: req.params.id
+        }
+      }).then(result => {
+        res.render("contact", {
+          name: result.store_name,
+          address: result.address,
+          font: result.font,
+          font_color: result.font_color,
+          body_color: result.body_color,
+          accent_color: result.accent_color
+        });
+      });
     });
 
     app.post("/api/store", (req, res) => {
         db.Store.create({
           store_name: req.body.store_name,
           address: req.body.address,
-          font: req.body.font,
-          background_image: req.body.background_image,
           about: req.body.about,
-          about_image: req.body.about_image,
-          accent_color: req.body.accent_color,
           UserId: req.body.UserId
         }).then(result => {
           res.json(result);

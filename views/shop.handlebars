@@ -4,28 +4,27 @@
         color: {{ body_color }};
     }
 
-    .nav, .nav-item, .nav-link, .button, footer, footer a {
+    .nav, .nav-item, .nav-link, footer, footer a {
         color: {{ font_color }};
     }
 
-    .button, footer {
+    img {
+        width: 300px;
+        height: 400px;
+    }
+
+    img:hover {
+        cursor: pointer;
+    }
+
+    footer {
         background-color: {{ accent_color }};
-    }
-
-    .background {
-        background-image: url({{ background_image }});
-        color: {{ body_color }};
-    }
-
-    .about {
-        background-image: url({{ about_image }});
-        color: {{ body_color }};
     }
 </style>
 
 <a name="#"></a>
 
-    <header class="p-5 header position-absolute">
+    <header class="p-5 header">
         <nav class="row">
             <div class="col-4">
                 <ul class="nav">
@@ -44,7 +43,7 @@
             <div class="col-4">
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link pt-0 pb-0 storeFront" href="/storefront.html">{{ store_name }}</a>
+                        <a class="nav-link pt-0 pb-0 storeFront" href="/storefront.html">{{ store }}</a>
                     </li>
                 </ul>
             </div>
@@ -52,7 +51,7 @@
             <div class="col-4">
                 <ul class="nav justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/index.html">Login</a>
+                    <a class="nav-link active" href="/index.html">Login</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="/cart.html">
@@ -66,62 +65,23 @@
         </nav>       
     </header>
 
-    <div class="background">
-        <div class="m-0 text-center description">
-            <p class="m-0">{{ store_name }}</p>
-            <a href="/shop.html" class="button">shop products</a>
-        </div>
-        
-    </div>
-
     <div class="container">
-        <div class="row p-5">
-            <h1 class="col-12 pt-5 pb-2 text-center">Popular Items</h1>
-            <h6 class="col-12 pb-5 text-center">These items have been viewed the most from this store</h6>
-             
-            <div class="col-4">
-                <figure class="text-center pop-item">
-                    <a href='#' ><img src="{{ productImage1 }}" class="product" alt="popular item">
-                        <div class="pop-desc">{{ productName1 }}</div>
-                    </a>
-                </figure>
-            </div>
-            
-            <div class="col-4">
-                <figure class="text-center pop-item">
-                    <a href='#' ><img src="{{ productImage2 }}" class="product" alt="popular item">
-                        <div class="pop-desc">{{ productName2 }}</div>
-                    </a>
-                </figure>
-            </div>
-        
-            <div class="col-4">
-                <figure class="text-center pop-item">
-                    <a href='#' ><img src="{{ productImage3 }}" class="product" alt="popular item">
-                        <div class="pop-desc">{{ productName3 }}</div>
-                    </a>
-                </figure>
-            </div>
-        </div>
-    </div>
 
-    <div class="about" id="about">
-        <div class="container p-5"> 
-            <h1 class="text-center">About Us</h1>
-            <p>
-                {{ about }}
-            </p>
+        <div class="row pt-5 pb-5 text-center justify-content-center">
+            {{#each products}}
+                {{>product/product-block}}
+            {{/each}}
         </div>
+
     </div>
-    
 
     <footer class="page-footer font-small p-5">
         <div class="container-fluid text-center text-md-left">
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-3">
-                    <div class="mt-md-0">
-                        <h5 class="text-uppercase">{{ store_name }}</h5>
+                    <div class="mt-md-0 mt-3">
+                        <h5 class="text-uppercase">{{ store }}</h5>
                         <p>{{ address }}</p>
                     </div>
                 </div>

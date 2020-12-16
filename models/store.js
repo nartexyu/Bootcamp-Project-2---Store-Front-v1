@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         background_image: {
             type: DataTypes.STRING,
-            allowNull: true
+            defaultValue: "https://placehold.it/1920x1080"
         },
         about: {
             type: DataTypes.TEXT,
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         about_image: {
             type: DataTypes.STRING,
-            allowNull: true
+            defaultValue: "https://placehold.it/1920x1080"
         },
         accent_color: {
             type: DataTypes.STRING,

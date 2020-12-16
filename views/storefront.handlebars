@@ -1,0 +1,118 @@
+<a name="#"></a>
+
+    <header class="p-5 header position-absolute">
+        <nav class="row">
+            <div class="col-4">
+                <ul class="nav">
+                    <li class="nav-item">
+                    <a class="nav-link" href="/shop.html">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/storefront.html#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-4">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link pt-0 pb-0 storeFront" href="/storefront.html">{{ store_name }}</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-4">
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/index.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/cart.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z"/>
+                        </svg>
+                    </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>       
+    </header>
+
+    <div class="background">
+        <div class="m-0 text-center description">
+            <p class="m-0">{{ store_name }}</p>
+            <a href="/shop.html" class="button">shop products</a>
+        </div>
+        
+    </div>
+
+    <div class="container">
+        <div class="row p-5">
+            <h1 class="col-12 pt-5 pb-2 text-center">Popular Items</h1>
+            <h6 class="col-12 pb-5 text-center">These items have been viewed the most from this store</h6>
+             
+            <div class="col-4">
+                <figure class="text-center pop-item">
+                    <a href='#' ><img src="{{ Products.image }}" alt="popular item">
+                        <div class="pop-desc">{{ Products.name }}</div>
+                    </a>
+                </figure>
+            </div>
+            
+            <div class="col-4">
+                <figure class="text-center pop-item">
+                    <a href='#' ><img src="https://placehold.it/300x400" alt="popular item">
+                        <div class="pop-desc">product name</div>
+                    </a>
+                </figure>
+            </div>
+        
+            <div class="col-4">
+                <figure class="text-center pop-item">
+                    <a href='#' ><img src="https://placehold.it/300x400" alt="popular item">
+                        <div class="pop-desc">product name</div>
+                    </a>
+                </figure>
+            </div>
+        </div>
+    </div>
+
+    <div class="about" id="about">
+        <div class="container p-5"> 
+            <h1 class="text-center">About Us</h1>
+            <p>
+                {{ about }}
+            </p>
+        </div>
+    </div>
+    
+
+    <footer class="page-footer font-small p-5">
+        <div class="container-fluid text-center text-md-left">
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-3">
+                    <div class="mt-md-0">
+                        <h5 class="text-uppercase">{{ store_name }}</h5>
+                        <p>{{ address }}</p>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="mb-md-0 text-right">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#">Back to Top</a>
+                            </li>
+                            <li>
+                                <a href="/contact.html">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-3"></div>
+            </div>
+        </div>
+    </footer>

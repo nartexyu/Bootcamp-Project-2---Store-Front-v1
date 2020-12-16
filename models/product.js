@@ -18,11 +18,11 @@ module.exports = (sequelize, DataTypes) => {
         },
         popularity: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            defaultValue: 0
         },
         image: {
             type: DataTypes.STRING,
-            allowNull: false
+            defaultValue: "https://placehold.it/200x200"
         }
     });
     Product.associate = models => {

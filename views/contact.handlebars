@@ -8,15 +8,6 @@
         color: {{ font_color }};
     }
 
-    img {
-        width: 300px;
-        height: 400px;
-    }
-
-    img:hover {
-        cursor: pointer;
-    }
-
     footer {
         background-color: {{ accent_color }};
     }
@@ -43,7 +34,7 @@
             <div class="col-4">
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link pt-0 pb-0 storeFront" href="/storefront.html">{{ store }}</a>
+                        <a class="nav-link pt-0 pb-0 storeFront" href="/storefront.html">{{ name }}</a>
                     </li>
                 </ul>
             </div>
@@ -66,13 +57,27 @@
     </header>
 
     <div class="container">
-
-        <div class="row pt-5 pb-5 text-center justify-content-center">
-            {{#each products}}
-                {{>product/product-block}}
-            {{/each}}
-        </div>
-
+        <h3>Contact Us</h3>
+        <form>
+            <div class="form-group">
+                <label for="exampleInputPassword1">First Name</label>
+                <input type="firstName" class="form-control" id="firstNameInput">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Last Name</label>
+                <input type="lastName" class="form-control" id="lastNameInput">
+            </div>  
+            <div class="form-group">
+              <label for="emailInput">Email address</label>
+              <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Message</label>
+                <textarea class="form-control" id="textAreaInput" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+          </form>
     </div>
 
     <footer class="page-footer font-small p-5">
@@ -81,7 +86,7 @@
                 <div class="col-3"></div>
                 <div class="col-3">
                     <div class="mt-md-0 mt-3">
-                        <h5 class="text-uppercase">{{ store }}</h5>
+                        <h5 class="text-uppercase">{{ name }}</h5>
                         <p>{{ address }}</p>
                     </div>
                 </div>

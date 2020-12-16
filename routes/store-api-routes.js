@@ -45,15 +45,28 @@ module.exports = app => {
         });
     });
 
+    app.get("/contact/:id", (req, res) => {
+      db.Store.findOne({
+        where: {
+          id: req.params.id
+        }
+      }).then(result => {
+        res.render("contact", {
+          name: result.store_name,
+          address: result.address,
+          font: result.font,
+          font_color: result.font_color,
+          body_color: result.body_color,
+          accent_color: result.accent_color
+        });
+      });
+    });
+
     app.post("/api/store", (req, res) => {
         db.Store.create({
           store_name: req.body.store_name,
           address: req.body.address,
-          font: req.body.font,
-          background_image: req.body.background_image,
           about: req.body.about,
-          about_image: req.body.about_image,
-          accent_color: req.body.accent_color,
           UserId: req.body.UserId
         }).then(result => {
           res.json(result);

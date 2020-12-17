@@ -19,5 +19,26 @@ $(document).ready(() => {
         });
     });
 
-})
+    $(".cart-delete").on("click", event => {
+        let itemid = $(event.currentTarget).data("cartid");
+        $.ajax({
+            url: "/api/cart/" + itemid,
+            method: "DELETE"
+        }).then(result => {
+            location.reload();
+        });
+    });
+    let amount = 1;
+
+    $("#add").on("click", () => {
+        $("#prod-quantity").val(amount);
+        amount++;
+    });
+
+    $("#subtract").on("click", () => {
+        amount -= 1;
+        $("#prod-quantity").val(amount);
+    });
+
+});
     

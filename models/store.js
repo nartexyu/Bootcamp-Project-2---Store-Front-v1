@@ -4,9 +4,13 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        tagline: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
         address: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         font: {
             type: DataTypes.STRING,
@@ -32,9 +36,13 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             defaultValue: "gray"
         },
-        accent_color: {
+        footer_color: {
             type: DataTypes.STRING,
             defaultValue: "white"
+        },
+        accent_color: {
+            type: DataTypes.STRING,
+            defaultValue: "black"
         }
     });
     Store.associate = models => {

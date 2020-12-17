@@ -77,6 +77,12 @@ module.exports = app => {
     });
   });
 
+  app.post("/api/product", (req, res) => {
+    db.Product.create(req.body).then(result => {
+      res.json(result);
+    });
+  });
+
   // app.put("/api/cart", (req, res) => {
   //   db.Product.update(
   //     {UserId: req.body.userid},

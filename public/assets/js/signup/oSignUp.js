@@ -2,8 +2,7 @@ $("#storeform").on("submit", event => {
     event.preventDefault();
     let storeInfo = {
         store: {
-            store_name: $("#storeNameInput").val().trim(),
-            address: $("#storeAddressInput").val().trim()
+            store_name: $("#storeNameInput").val().trim()
         },
         user: {
             email: $("#emailInput").val().trim(),
@@ -12,7 +11,12 @@ $("#storeform").on("submit", event => {
             last_name: $("#lastNameInput").val().trim()
         }
     };
-    $.post("/api/store", storeInfo).then(response => {
-        window.location = "/storeeditor/" + response.id;
+    $.ajax({
+        url: "/api/store",
+        type: "POST",
+        data: storeInfo
+    }).then(response => {
+        console.log(response.id);
+        window.location = "/storeEditor/" + response.id;
     });
 });

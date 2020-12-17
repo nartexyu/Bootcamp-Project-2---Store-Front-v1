@@ -64,6 +64,28 @@ module.exports = app => {
       });
   });
 
+  app.get("/storeEditor/:storeid", (req, res) => {
+    db.Store.findOne({
+      where: {
+        id: req.params.storeid
+      },
+      include: [db.Product]
+    }).then(result => {
+      let data = {
+        userid: result.UserId,
+        storeid: result.id,
+        name: result.store_name
+      };
+      if (result.Products.length > 1) {
+        data.hasProducts = true;
+        data.products = result.Products;
+      } else {
+        data.hasProducts = false;
+      };
+      res.render("storeEditor", data);
+    });
+  });
+
   app.get("/contact/:userid/:id", (req, res) => {
     db.Store.findOne({
       where: {
@@ -90,7 +112,6 @@ module.exports = app => {
         email: req.body.user.email
       }
     }).then(result => {
-      console.log(result.dataValues);
       if (!result) {
         db.User.create({
           email: req.body.user.email,
@@ -99,10 +120,8 @@ module.exports = app => {
           last_name: req.body.user.last_name,
           isSeller: true
         }).then(data => {
-          console.log(data.dataValues.id);
           db.Store.create({
             store_name: req.body.store.store_name,
-            address: req.body.store.address,
             UserId: data.dataValues.id
           }).then(response => {
               res.json(response);
@@ -117,13 +136,22 @@ module.exports = app => {
         }).then(response => {
           db.Store.create({
             store_name: req.body.store.store_name,
-            address: req.body.store.address,
             UserId: result.dataValues.id
           }).then(data => {
             res.json(data);
           });
         });
       };
+    });
+  });
+
+  app.put("/api/store/:storeid", (req, res) => {
+    db.Store.update(req.body, {
+      where: {
+        id: req.params.storeid
+      }
+    }).then(result => {
+      res.json(result);
     });
   });
 };

@@ -1,0 +1,151 @@
+/* Universal Styling */
+html, body {
+	height: 100vh;
+	margin: 0;
+	scroll-behavior: smooth;
+}
+
+body {
+	color: black;
+}
+
+.nav, .nav-item, .nav-link {
+	color: black;
+}
+
+header {
+	width: 100%;
+	z-index: 100;
+}
+
+.a-customizations {
+	color: black;
+}
+
+.a-hover-customizations:hover {
+	transition: color 500ms;
+	color: grey;
+	text-decoration: none;
+}
+
+.button-color{
+	background-color: black;
+	color: white;
+}
+
+.button-color:hover {
+    transition: background-color 500ms;
+    background-color: grey;
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Footer variations */
+footer {
+    bottom: 0;
+	width:100%; 
+	background: black;
+	color: white;
+}
+
+.footer-fixed {
+	position: fixed;
+
+}
+
+.footer-static {
+	position: static;
+}
+
+.footer-color {
+	color: white;
+}
+
+.footer-color a{
+    color: white;
+}
+
+
+/* StoreFront.html */
+.storeFront {
+    font-size: 1.75rem;
+}
+
+.background {
+	height: 100%;
+	width: 100%;
+	background-size: 100%;
+	background-position: center;
+  	background-attachment: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: -1;
+}
+
+.background-customizations {
+    background-image: url(https://placehold.it/1920x1080);
+    position: static;
+    color: white;
+}
+
+.product {
+	height: 300px;
+	width: 250px;
+}
+
+.description {
+	padding: 40vh;
+	font-size: 3rem;
+	font-weight: 200;
+}
+
+.button {
+	display: inline-block;
+	font-size: 1.5rem;
+	text-decoration: none;
+	text-transform: lowercase;
+	border-width: 0.1rem;
+	border-style: hidden;
+	padding: .5em 1.5em;
+	z-index: 100;
+}
+
+.button-customizations {
+    background-color: white;
+    color: black;
+}
+
+.button:hover,
+.button:focus {
+	transition: background-color 500ms;
+    background-color: rgba(229,229,229, 0.75);
+    text-decoration: none;
+    color: black;
+}
+
+
+.pop-item a {
+	color: black;
+}
+
+.about {
+	height: 85vh;
+	width: auto;
+	background-size: 100%;
+	background-position: center;
+  	background-attachment: scroll;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: -1;
+}
+
+.about-customizations {
+    background-image: url(https://placehold.it/1920x1080);
+    color: white;
+    position: static;
+}

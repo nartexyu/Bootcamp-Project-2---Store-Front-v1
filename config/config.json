@@ -1,7 +1,7 @@
 {
     "development": {
       "username": "root",
-      "password": "Hersh6624!",
+      "password": "nathanielyu917",
       "database": "store_frontDB",
       "host": "127.0.0.1",
       "dialect": "mysql"

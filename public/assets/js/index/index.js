@@ -8,9 +8,14 @@ $("#login").on("submit", event => {
         return;
     };
     $.post("/api/login", userInfo).then(() => {
-        window.location.replace("/storefront");
-    })//.catch(err => {
-    //     console.log(err);
-    //     alert("Error: " + err);
-    // });
+        window.location = "/landing";
+    });
+});
+
+const modal = () => {
+    $("#modal").css("display", "block");
+};
+
+$(".nav-link").on("click", () => {
+    modal();
 });

@@ -13,6 +13,7 @@ module.exports = app => {
           let data = [];
           result.forEach(store => {
             let info = {
+              id: store.id,
               store: store.store_name,
               image: store.Products[0].image 
             };
@@ -23,7 +24,7 @@ module.exports = app => {
       });
   
     // Get route for specific store by ID
-    app.get("/api/store/:id", (req, res) => {
+    app.get("/store/:id", (req, res) => {
         db.Store.findOne({
           where: {
             id: req.params.id
@@ -34,13 +35,17 @@ module.exports = app => {
           ]
         }).then(result => {
           res.render("storefront", {
+            id: result.id,
             font: result.font,
             background_image: result.background_image,
             store_name: result.store_name,
+            product1Id: result.Products[0].id,
             productImage1: result.Products[0].image,
             productName1: result.Products[0].name,
+            product2Id: result.Products[1].id,
             productImage2: result.Products[1].image,
             productName2: result.Products[1].name,
+            product3Id: result.Products[2].id,
             productImage3: result.Products[2].image,
             productName3: result.Products[2].name,
             about: result.about,
@@ -60,6 +65,7 @@ module.exports = app => {
         }
       }).then(result => {
         res.render("contact", {
+          id: result.id,
           name: result.store_name,
           address: result.address,
           font: result.font,
@@ -71,13 +77,54 @@ module.exports = app => {
     });
 
     app.post("/api/store", (req, res) => {
-        db.Store.create({
-          store_name: req.body.store_name,
-          address: req.body.address,
-          about: req.body.about,
-          UserId: req.body.UserId
-        }).then(result => {
-          res.json(result);
-        });
+      console.log(req.body);
+      db.User.findOne({
+        where: {
+          email: req.body.user.email
+        }
+      }).then(result => {
+        console.log(result.dataValues);
+        if (!result) {
+          db.User.create({
+            email: req.body.user.email,
+            password: req.body.user.password,
+            first_name: req.body.user.first_name,
+            last_name: req.body.user.last_name,
+            isSeller: true
+          }).then(data => {
+            console.log(data.dataValues.id);
+            db.Store.create({
+              store_name: req.body.store.store_name,
+              address: req.body.store.address,
+              UserId: data.dataValues.id
+            }).then(response => {
+                console.log(response);
+            })
+          })
+        } else {
+          db.Store.create({
+            store_name: req.body.store.store_name,
+            address: req.body.store.address,
+            UserId: result.dataValues.id
+          }).then(data => {
+            db.User.update(
+              {isSeller: true},
+              {where: {
+                id: result.dataValues.id
+              }
+            }).then(response => {
+              res.json(response);
+            })
+          })
+        }
+      })
+        // db.Store.create({
+        //   store_name: req.body.store_name,
+        //   address: req.body.address,
+        //   about: req.body.about,
+        //   UserId: req.body.UserId
+        // }).then(result => {
+        //   res.json(result);
+        // });
     });
 };

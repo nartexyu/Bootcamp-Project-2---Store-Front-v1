@@ -16,7 +16,7 @@ module.exports = app => {
   });
 
   // Get route for all products and their parent store
-  app.get("/api/storeproducts/:storeId", (req, res) => {
+  app.get("/storeproducts/:storeId", (req, res) => {
       db.Product.findAll({
           where: {
             StoreId: req.params.storeId
@@ -27,6 +27,7 @@ module.exports = app => {
           include: [db.Store]
       }).then(result => {
         let data = {
+          storeId: result[0].StoreId,
           store: result[0].Store.store_name,
           address: result[0].Store.address,
           font: result[0].Store.font,
@@ -49,7 +50,7 @@ module.exports = app => {
       });
   });
 
-  app.get("/api/product/:id", (req, res) => {
+  app.get("/product/:id", (req, res) => {
     db.Product.findOne({
       where: {
         id: req.params.id
@@ -57,6 +58,7 @@ module.exports = app => {
       include: [db.Store]
     }).then(result => {
       res.render("product", {
+        storeId: result.Store.id,
         store: result.Store.store_name,
         image: result.image,
         name: result.name,

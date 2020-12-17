@@ -24,6 +24,7 @@ app.set("view engine", "handlebars");
 require("./routes/user-api-routes.js")(app);
 require("./routes/store-api-routes.js")(app);
 require("./routes/product-api-routes.js")(app);
+require("./routes/cart-api-routes.js")(app);
 require("./routes/cloudinary-api-routes.js")(app);
 require("./routes/html-routes.js")(app);
 

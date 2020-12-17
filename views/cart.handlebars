@@ -1,9 +1,10 @@
-<style>
-    img:hover {
-        cursor: pointer;
-    }
-</style>
-
+ <style>
+     img {
+         width: 75px;
+         height: 75px;
+     }
+ </style>
+ 
  <a name="#"></a>
 
     <header class="p-5 header">
@@ -14,10 +15,10 @@
                     <a class="nav-link" href="/landing/{{ userid }}">Shop</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="">About</a>
+                    <a class="nav-link" href="/landing/{{ userid }}">About</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="">Contact</a>
+                    <a class="nav-link" href="/contact.html">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -25,7 +26,7 @@
             <div class="col-4">
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link pt-0 pb-0 storeFront" href="/landing/{{ userid }}">Store Front</a>
+                        <a class="nav-link pt-0 pb-0 storeFront" href="//landing/{{ userid }}">Store Front</a>
                     </li>
                 </ul>
             </div>
@@ -36,7 +37,7 @@
                     <a class="nav-link active" href="/">Login</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/cart">
+                    <a class="nav-link" href="/cart/{{ userid }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z"/>
                         </svg>
@@ -47,12 +48,33 @@
         </nav>       
     </header>
 
-    <div class="p-5 text-center">
-        <div class="row justify-content-center p-5">
-            {{#each data}}
-                {{>product/store-block}}
-            {{/each}}
+    <div class="container">
+        <h3>Shopping Cart</h3>
+        
+        <div class="row pl-3 pr-3 mb-1">
+            <p class="col-1 m-0">Item</p>
+            <p class="col-6 m-0"></p>
+            <p class="col-3 m-0 text-right">Quantity</p>
+            <p class="col-2 m-0 text-right">Price</p>
+
         </div>
+        
+        <hr class="m-0">
+            {{#each cart}}
+                {{>product/cart-block}}
+            {{/each}}
+        <div class="row align-items-center p-3">
+            <div class="col-12">
+                <h5 class="text-right">Subtotal: ${{ subtotal }}</h5>
+            </div>
+        </div>
+
+        <div class="row align-items-center p-3">
+            <div class="col-12 text-right p-0">
+                <button type="button" class="btn button-color">Checkout</button>
+            </div>
+        </div>
+
     </div>
 
     <footer class="page-footer font-small p-5">
@@ -72,7 +94,7 @@
                                 <a href="#">Back to Top</a>
                             </li>
                             <li>
-                                <a href="">Contact</a>
+                                <a href="/contact.html">Contact</a>
                             </li>
                         </ul>
                     </div>

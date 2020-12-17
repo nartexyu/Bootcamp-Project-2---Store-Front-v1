@@ -30,13 +30,13 @@
             <div class="col-4">
                 <ul class="nav">
                     <li class="nav-item">
-                    <a class="nav-link" href="/landing">Shop</a>
+                    <a class="nav-link" href="/landing/{{ userid }}">Shop</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/contact/{{ id }}">Contact</a>
+                    <a class="nav-link" href="/contact/{{ userid }}/{{ id }}">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -44,7 +44,7 @@
             <div class="col-4">
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link pt-0 pb-0 storeFront" href="/store/{{ id }}">{{ store_name }}</a>
+                        <a class="nav-link pt-0 pb-0 storeFront" href="/store/{{ userid }}/{{ id }}">{{ store_name }}</a>
                     </li>
                 </ul>
             </div>
@@ -69,7 +69,7 @@
     <div class="background">
         <div class="m-0 text-center description">
             <p class="m-0">{{ store_name }}</p>
-            <a href="/storeproducts/{{ id }}" class="button">shop products</a>
+            <a href="/storeproducts/{{ userid }}/{{ id }}" class="button">shop products</a>
         </div>
         
     </div>
@@ -81,7 +81,7 @@
              
             <div class="col-4">
                 <figure class="text-center pop-item">
-                    <a href='/product/{{ product1Id }}' ><img src="{{ productImage1 }}" class="product" alt="popular item">
+                    <a href='/product/{{ userid }}/{{ product1Id }}' ><img src="{{ productImage1 }}" class="product" alt="popular item">
                         <div class="pop-desc">{{ productName1 }}</div>
                     </a>
                 </figure>
@@ -89,7 +89,7 @@
             
             <div class="col-4">
                 <figure class="text-center pop-item">
-                    <a href='/product/{{ product2Id }}' ><img src="{{ productImage2 }}" class="product" alt="popular item">
+                    <a href='/product/{{ userid }}/{{ product2Id }}' ><img src="{{ productImage2 }}" class="product" alt="popular item">
                         <div class="pop-desc">{{ productName2 }}</div>
                     </a>
                 </figure>
@@ -97,7 +97,7 @@
         
             <div class="col-4">
                 <figure class="text-center pop-item">
-                    <a href='/product/{{ product3Id }}' ><img src="{{ productImage3 }}" class="product" alt="popular item">
+                    <a href='/product/{{ userid }}/{{ product3Id }}' ><img src="{{ productImage3 }}" class="product" alt="popular item">
                         <div class="pop-desc">{{ productName3 }}</div>
                     </a>
                 </figure>

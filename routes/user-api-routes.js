@@ -19,4 +19,15 @@ module.exports = function(app) {
             console.log(err);
         });
     });
+
+    // app.get("/cart/:id", (req, res) => {
+    //     db.User.findOne({
+    //         where: {
+    //             id: req.params.id
+    //         },
+    //         include: [db.Product]
+    //     }).then(result => {
+    //         console.log(result);
+    //     });
+    // });
 };

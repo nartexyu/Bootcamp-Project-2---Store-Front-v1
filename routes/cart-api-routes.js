@@ -25,7 +25,12 @@ module.exports = app => {
                 cart.cost = cart.quantity * cart.price;
                 data.push(cart);
             });
-            let subtotal = data.reduce((a, b) => a.cost + b.cost);
+            let subtotal;
+            if (data.length > 1) {
+                subtotal = data.reduce((a, b) => a.cost + b.cost);
+            } else {
+                subtotal = data[0].cost;
+            };
             res.render("cart", {
                 userid: req.params.userid,
                 subtotal: subtotal,
@@ -39,6 +44,16 @@ module.exports = app => {
             quantity: req.body.quantity,
             UserId: req.body.userid,
             ProductId: req.body.productid
+        }).then(result => {
+            res.json(result);
+        });
+    });
+
+    app.delete("/api/cart/:itemid", (req, res) => {
+        db.Cart.destroy({
+            where: {
+                id: req.params.itemid
+            }
         }).then(result => {
             res.json(result);
         });

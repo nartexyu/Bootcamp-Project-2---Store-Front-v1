@@ -7,8 +7,8 @@ $("#login").on("submit", event => {
     if (!userInfo.email || !userInfo.password) {
         return;
     };
-    $.post("/api/login", userInfo).then(() => {
-        window.location = "/landing";
+    $.post("/api/login", userInfo).then(response => {
+        window.location = "/landing/" + response.id;
     });
 });
 

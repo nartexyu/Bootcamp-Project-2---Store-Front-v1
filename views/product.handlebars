@@ -26,13 +26,13 @@
             <div class="col-4">
                 <ul class="nav">
                     <li class="nav-item">
-                    <a class="nav-link" href="/landing">Shop</a>
+                    <a class="nav-link" href="/landing/{{ userid }}">Shop</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/store/{{ storeId }}#about">About</a>
+                    <a class="nav-link" href="/store/{{ userid }}/{{ storeId }}#about">About</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/contact/{{ storeId }}">Contact</a>
+                    <a class="nav-link" href="/contact/{{ userid }}/{{ storeId }}">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -40,7 +40,7 @@
             <div class="col-4">
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link pt-0 pb-0 storeFront" href="/store/{{ storeId }}">{{ store }}</a>
+                        <a class="nav-link pt-0 pb-0 storeFront" href="/store/{{ userid }}/{{ storeId }}">{{ store }}</a>
                     </li>
                 </ul>
             </div>
@@ -86,13 +86,13 @@
 
                 <div class="row pb-3">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Quantity" aria-label="Recipient's username with two button addons">
-                        <button class="btn btn-outline-secondary" type="button">
+                        <input type="text" class="form-control" id="prod-quantity" placeholder="Quantity" aria-label="Recipient's username with two button addons">
+                        <button class="btn btn-outline-secondary" id="add" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                             </svg>
                         </button>
-                        <button class="btn btn-outline-secondary" type="button">
+                        <button class="btn btn-outline-secondary" id="subtract" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
                             </svg>
@@ -101,7 +101,7 @@
                 </div>
 
                 <div class="row pt-3">
-                    <button type="button" class="btn btn-lg border button-color">Add to Cart</button>
+                    <button type="button" class="btn btn-lg border button-color" id="prod-cart" data-userid="{{ userid }}" data-productid="{{ productid }}">Add to Cart</button>
                 </div>
 
             </div>
@@ -125,7 +125,7 @@
                                 <a href="#">Back to Top</a>
                             </li>
                             <li>
-                                <a href="/contact/{{ storeId }}">Contact</a>
+                                <a href="/contact/{{ userid }}/{{ storeId }}">Contact</a>
                             </li>
                         </ul>
                     </div>

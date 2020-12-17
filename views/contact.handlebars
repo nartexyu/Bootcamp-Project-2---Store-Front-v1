@@ -20,13 +20,13 @@
             <div class="col-4">
                 <ul class="nav">
                     <li class="nav-item">
-                    <a class="nav-link" href="/landing">Shop</a>
+                    <a class="nav-link" href="/landing/{{ userid }}">Shop</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/store/{{ id }}#about">About</a>
+                    <a class="nav-link" href="/store/{{ userid }}/{{ id }}#about">About</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/contact/{{ id }}">Contact</a>
+                    <a class="nav-link" href="/contact/{{ userid }}/{{ id }}">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -34,7 +34,7 @@
             <div class="col-4">
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link pt-0 pb-0 storeFront" href="/store/{{ id }}">{{ name }}</a>
+                        <a class="nav-link pt-0 pb-0 storeFront" href="/store/{{ userid }}/{{ id }}">{{ name }}</a>
                     </li>
                 </ul>
             </div>
@@ -97,7 +97,7 @@
                                 <a href="#">Back to Top</a>
                             </li>
                             <li>
-                                <a href="/contact/{{ id }}">Contact</a>
+                                <a href="/contact/{{ userid }}/{{ id }}">Contact</a>
                             </li>
                         </ul>
                     </div>

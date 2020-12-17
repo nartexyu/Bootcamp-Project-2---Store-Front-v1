@@ -31,6 +31,14 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false
             }
         });
+        // Product.belongsTo(models.User, {
+        //     foreignKey: {
+        //         allowNull: true
+        //     }
+        // });
+        Product.hasMany(models.Cart, {
+            onDelete: "cascade"
+        });
     };
     return Product;
 }

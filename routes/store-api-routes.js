@@ -3,7 +3,8 @@ const db = require("../models");
 module.exports = app => {
 
   // Get route for all stores and their products
-  app.get("/landing", (req, res) => {
+  app.get("/landing/:userid", (req, res) => {
+      const userid = req.params.userid;
       db.Store.findAll({
         include: [db.Product],
         order: [
@@ -13,18 +14,22 @@ module.exports = app => {
         let data = [];
         result.forEach(store => {
           let info = {
+            userid: userid,
             id: store.id,
             store: store.store_name,
             image: store.Products[0].image 
           };
           data.push(info);
         });
-        res.render("landing", {data: data});
+        res.render("landing", {
+          data: data,
+          userid: userid
+        });
       });
     });
 
   // Get route for specific store by ID
-  app.get("/store/:id", (req, res) => {
+  app.get("/store/:userid/:id", (req, res) => {
       db.Store.findOne({
         where: {
           id: req.params.id
@@ -35,6 +40,7 @@ module.exports = app => {
         ]
       }).then(result => {
         res.render("storefront", {
+          userid: req.params.userid,
           id: result.id,
           font: result.font,
           background_image: result.background_image,
@@ -58,13 +64,14 @@ module.exports = app => {
       });
   });
 
-  app.get("/contact/:id", (req, res) => {
+  app.get("/contact/:userid/:id", (req, res) => {
     db.Store.findOne({
       where: {
         id: req.params.id
       }
     }).then(result => {
       res.render("contact", {
+        userid: req.params.userid,
         id: result.id,
         name: result.store_name,
         address: result.address,

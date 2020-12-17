@@ -35,6 +35,10 @@ module.exports = (sequelize, DataTypes) => {
         User.hasOne(models.Store, {
             onDelete: "cascade"
         });
+        // User.hasMany(models.Product);
+        User.hasMany(models.Cart, {
+            onDelete: "cascade"
+        });
     };
     User.prototype.validPassword = function(password) {
         return bcrypt.compareSync(password, this.password);

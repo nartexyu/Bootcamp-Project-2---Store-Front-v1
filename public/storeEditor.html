@@ -54,25 +54,249 @@
 
     <div class="container border rounded">
         <div class="row">
-            <div class="col-4">
-            
-                <div class="row border-right border-bottom p-3">Store Details</div>
-
-                <div class="row border-right border-bottom p-3">Font</div>
-
-                <div class="row border-right border-bottom p-3">Colors</div>
-
-                <div class="row border-right border-bottom p-3">Background Images</div>
-
-                <div class="row border-right border-bottom p-3">Products</div>
-            
+            <div class="col-4 p-0">
+              <div class="list-group list-group-flush border-right rounded" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action active" id="list-store-list" data-toggle="list" href="#list-store" role="tab" aria-controls="store">Store Details</a>
+                <a class="list-group-item list-group-item-action" id="list-font-list" data-toggle="list" href="#list-font" role="tab" aria-controls="font">Font</a>
+                <a class="list-group-item list-group-item-action" id="list-colors-list" data-toggle="list" href="#list-colors" role="tab" aria-controls="colors">Colors</a>
+                <a class="list-group-item list-group-item-action" id="list-background-list" data-toggle="list" href="#list-background" role="tab" aria-controls="background">Background Images</a>
+                <a class="list-group-item list-group-item-action border-bottom" id="list-products-list" data-toggle="list" href="#list-product-upload" role="tab" aria-controls="productUpload">Product Upload</a>
+                <a class="list-group-item list-group-item-action border-bottom" id="list-products-list" data-toggle="list" href="#list-products" role="tab" aria-controls="products">Products</a>
+              </div>
             </div>
-
             <div class="col-8">
+              <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="list-store" role="tabpanel" aria-labelledby="list-home-list">
+                    <form class="col-12 p-4">
+                        <div class="form-group">
+                          <label for="exampleFormControlInput1">Store Name</label>
+                          <input type="storeName" class="form-control" id="storeName" placeholder="Store Name">
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Store Details</label>
+                            <input type="storeDetails" class="form-control" id="storeName" placeholder="Store Details">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">About</label>
+                            <textarea class="form-control" id="aboutDetails" placeholder="About Us" rows="3"></textarea>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Store Address</label>
+                            <input type="storeAddress" class="form-control" id="storeAddress" placeholder="Store Address">
+                        </div>
+                        
+                        <div class="text-right">
+                            <button type="submit" class="btn button-color">Submit</button>
+                        </div>
 
-                <div class="row p-3">123</div>
+                        <div class="text-right updateStatus">
+                            
+                        </div>
+                    </form>
+                </div>
 
+                <div class="tab-pane fade" id="list-font" role="tabpanel" aria-labelledby="list-profile-list">
+                    <form class="col-12 p-4">
+                        <label for="exampleFormControlInput1">Font</label>
+                        <div class="input-group mb-3">
+                            <select class="custom-select" id="inputGroupSelect02">
+                              <option selected>Choose...</option>
+                              <option value="1">Font 1</option>
+                              <option value="2">Font 2</option>
+                              <option value="3">Font 3</option>
+                              <option value="4">Font 4</option>
+                              <option value="5">Font 5</option>
+                            </select>
+
+                            <div class="input-group-append">
+                                <label class="input-group-text" for="inputGroupSelect02">Options</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Header Font Color</label>
+                            <input type="headerFontColor" class="form-control" id="headerFontColor" placeholder="Black">
+                        </div>
+          
+                        <div class="form-group">
+                              <label for="exampleFormControlInput1">Body Font Color</label>
+                              <input type="bodyFontColor" class="form-control" id="bodyFontColor" placeholder="Black">
+                        </div>
+                          
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Footer Font Color</label>
+                            <input type="footerFontColor" class="form-control" id="footerFontColor" placeholder="White">
+                        </div>
+
+                        <div class="text-right">
+                            <button type="submit" class="btn button-color">Submit</button>
+                        </div>
+
+                        <div class="text-right updateStatus">
+
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="list-colors" role="tabpanel" aria-labelledby="list-messages-list">
+                    <form class="col-12 p-4">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Store Color</label>
+                            <input type="storeColor" class="form-control" id="storeColor" placeholder="Black">
+                        </div>
+
+                        <div class="text-right">
+                            <button type="submit" class="btn button-color">Submit</button>
+                        </div>
+
+                        <div class="text-right updateStatus">
+
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="list-background" role="tabpanel" aria-labelledby="list-settings-list">
+                    <form class="col-12 p-4">
+                        <label for="exampleFormControlInput1">Background Image</label>
+                        <div class="input-group pb-3">
+                            <div class="custom-file">
+                              <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                              <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                            </div>
+                            <div class="input-group-append">
+                              <button class="btn btn-outline-secondary button-color" type="button" id="inputGroupFileAddon04">Upload</button>
+                            </div>
+                        </div>
+
+                        <label for="exampleFormControlInput1">About Image</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                              <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                              <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                            </div>
+                            <div class="input-group-append">
+                              <button class="btn btn-outline-secondary button-color" type="button" id="inputGroupFileAddon04">Upload</button>
+                            </div>
+                        </div>
+
+                        <div class="text-right updateStatus">
+
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="list-product-upload" role="tabpanel" aria-labelledby="list-settings-list">
+                    <form class="col-12 p-4">    
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Product Name</label>
+                            <input type="productName" class="form-control" id="productName" placeholder="Name">
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Price</label>
+                            <input type="price" class="form-control" id="price" placeholder="$">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Inventory</label>
+                            <input type="inventory" class="form-control" id="inventory" placeholder="#">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Description</label>
+                            <textarea class="form-control" id="productDescription" placeholder="Product description" rows="3"></textarea>
+                        </div>
+
+                        <label for="exampleFormControlInput1">Product Image</label>
+                        <div class="input-group mb-3">
+                            <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile02">
+                            <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+                            </div>
+                            <div class="input-group-append">
+                            <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
+                            </div>
+                        </div>
+
+                        <div class="text-right">
+                            <button type="submit" class="btn button-color">Submit</button>
+                        </div>
+
+                        <div class="text-right updateStatus">
+
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="list-products" role="tabpanel" aria-labelledby="list-settings-list">
+                    <div class="col-12 p-4">
+                        <div class="row align-items-center">
+                            <div class="col-12">
+                                <label>Product List</label>
+                                <hr class="m-0 pb-4">
+                            </div>
+
+                            <div class="col-2 text-left">
+                                <button type="button" class="btn border-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                
+                            <div class="media align-items-center col-10 p-2">
+                                <img src="https://placehold.it/75x75" class="mr-3" alt="...">
+                                <div class="media-body">
+                                    <h6 class="mt-0 ml-3">Product Name</h6>
+                                </div>
+                            </div>      
+                        </div>
+
+                        <div class="row align-items-center">
+                            <div class="col-2 text-left">
+                                <button type="button" class="btn border-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                
+                            <div class="media align-items-center col-10 p-2">
+                                <img src="https://placehold.it/75x75" class="mr-3" alt="...">
+                                <div class="media-body">
+                                    <h6 class="mt-0 ml-3">Product Name</h6>
+                                </div>
+                            </div>      
+                        </div>
+
+                        <div class="row align-items-center">
+                            <div class="col-2 text-left">
+                                <button type="button" class="btn border-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                
+                            <div class="media align-items-center col-10 p-2">
+                                <img src="https://placehold.it/75x75" class="mr-3" alt="...">
+                                <div class="media-body">
+                                    <h6 class="mt-0 ml-3">Product Name</h6>
+                                </div>
+                            </div>      
+                        </div>
+
+                        <div class="text-right updateStatus">
+
+                        </div>
+                    </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
     </div>
 

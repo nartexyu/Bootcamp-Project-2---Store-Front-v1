@@ -13,6 +13,6 @@ $("#storeform").on("submit", event => {
         }
     };
     $.post("/api/store", storeInfo).then(response => {
-        console.log(response);
+        window.location = "/storeeditor/" + response.id;
     });
 });

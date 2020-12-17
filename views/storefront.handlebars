@@ -30,13 +30,13 @@
             <div class="col-4">
                 <ul class="nav">
                     <li class="nav-item">
-                    <a class="nav-link" href="/shop.html">Shop</a>
+                    <a class="nav-link" href="/landing">Shop</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/storefront.html#about">About</a>
+                    <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/contact.html">Contact</a>
+                    <a class="nav-link" href="/contact/{{ id }}">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -44,7 +44,7 @@
             <div class="col-4">
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link pt-0 pb-0 storeFront" href="/storefront.html">{{ store_name }}</a>
+                        <a class="nav-link pt-0 pb-0 storeFront" href="/store/{{ id }}">{{ store_name }}</a>
                     </li>
                 </ul>
             </div>
@@ -52,10 +52,10 @@
             <div class="col-4">
                 <ul class="nav justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/index.html">Login</a>
+                        <a class="nav-link active" href="/">Login</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/cart.html">
+                    <a class="nav-link" href="/cart">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z"/>
                         </svg>
@@ -69,7 +69,7 @@
     <div class="background">
         <div class="m-0 text-center description">
             <p class="m-0">{{ store_name }}</p>
-            <a href="/shop.html" class="button">shop products</a>
+            <a href="/storeproducts/{{ id }}" class="button">shop products</a>
         </div>
         
     </div>
@@ -81,7 +81,7 @@
              
             <div class="col-4">
                 <figure class="text-center pop-item">
-                    <a href='#' ><img src="{{ productImage1 }}" class="product" alt="popular item">
+                    <a href='/product/{{ product1Id }}' ><img src="{{ productImage1 }}" class="product" alt="popular item">
                         <div class="pop-desc">{{ productName1 }}</div>
                     </a>
                 </figure>
@@ -89,7 +89,7 @@
             
             <div class="col-4">
                 <figure class="text-center pop-item">
-                    <a href='#' ><img src="{{ productImage2 }}" class="product" alt="popular item">
+                    <a href='/product/{{ product2Id }}' ><img src="{{ productImage2 }}" class="product" alt="popular item">
                         <div class="pop-desc">{{ productName2 }}</div>
                     </a>
                 </figure>
@@ -97,7 +97,7 @@
         
             <div class="col-4">
                 <figure class="text-center pop-item">
-                    <a href='#' ><img src="{{ productImage3 }}" class="product" alt="popular item">
+                    <a href='/product/{{ product3Id }}' ><img src="{{ productImage3 }}" class="product" alt="popular item">
                         <div class="pop-desc">{{ productName3 }}</div>
                     </a>
                 </figure>
@@ -132,7 +132,7 @@
                                 <a href="#">Back to Top</a>
                             </li>
                             <li>
-                                <a href="/contact.html">Contact</a>
+                                <a href="/contact/{{ id }}">Contact</a>
                             </li>
                         </ul>
                     </div>

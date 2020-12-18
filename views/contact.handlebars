@@ -4,13 +4,19 @@
         color: {{ body_color }};
     }
 
-    .nav, .nav-item, .nav-link, footer, footer a {
+    .nav, .nav-item, .nav-link {
         color: {{ font_color }};
     }
 
-    footer {
+     .button, footer {
         background-color: {{ accent_color }};
+        color: {{ footer_color }};
     }
+    .custom-color {
+        color: {{ footer_color }};
+        background-color: transparent;
+    }
+
 </style>
 
 <a name="#"></a>
@@ -83,11 +89,11 @@
                 <label for="exampleFormControlTextarea1">Message</label>
                 <textarea class="form-control" id="textAreaInput" rows="5"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+            <button type="submit" class="btn button-customizations button mb-2">Submit</button>
           </form>
     </div>
 
-    <footer class="page-footer footer-color footer-fixed font-small p-5">
+    <footer class="page-footer footer-fixed font-small p-5">
         <div class="container-fluid text-center text-md-left">
             <div class="row">
                 <div class="col-3"></div>
@@ -101,10 +107,10 @@
                     <div class="mb-md-0 text-right">
                         <ul class="list-unstyled">
                             <li>
-                                <a href="#" class="a-customizations a-hover-customizations">Back to Top</a>
+                                <a href="#" class="a-customizations a-hover-customizations custom-color">Back to Top</a>
                             </li>
                             <li>
-                                <a class="a-customizations a-hover-customizations" href="/contact/{{ userid }}/{{ id }}">Contact</a>
+                                <a class="a-customizations a-hover-customizations custom-color" href="/contact/{{ userid }}/{{ id }}">Contact</a>
                             </li>
                         </ul>
                     </div>

@@ -29,7 +29,8 @@ module.exports = (sequelize, DataTypes) => {
         Product.belongsTo(models.Store, {
             foreignKey: {
                 allowNull: false
-            }
+            },
+            onDelete: 'cascade'
         });
         // Product.belongsTo(models.User, {
         //     foreignKey: {

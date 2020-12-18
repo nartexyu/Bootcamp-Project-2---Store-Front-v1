@@ -59,9 +59,19 @@ $(document).ready(() => {
             method: "PUT",
             data: info
         }).then(result=> {
+            console.log(result);
             alert("Updated store information!");
         });
-    }
+    };
+
+    $("#bg-image-form").on("submit", event => {
+        event.preventDefault();
+        let info = {
+            bg_scroll: $("#bg-scroll").val(),
+            about_scroll: $("#about-scroll").val()
+        };
+        updateStore(info);
+    });
 
     $("#store-details-form").on("submit", event => {
         event.preventDefault();
@@ -72,7 +82,7 @@ $(document).ready(() => {
             info.tagline = $("#storeTagline").val().trim();
         };
         if ($("#aboutDetails").val()) {
-            info.about = $("#aboutDetails").val().trim();
+            info.about = $("#aboutDetails").val();
         };
         if ($("#storeAddress").val()) {
             info.address = $("#storeAddress").val().trim();
@@ -180,6 +190,18 @@ $(document).ready(() => {
                 alert("Added product to your store!");
                 location.reload();
             });
+        });
+    });
+
+    $(".delete-store").on("click", event => {
+        event.preventDefault();
+        let storeid = $(event.currentTarget).data("storeid");
+        $.ajax({
+            url: "/api/store/" + storeid,
+            method: "DELETE"
+        }).then(response => {
+            alert("Sorry this didn't work out.");
+            window.location = "/";
         });
     });
 

@@ -45,47 +45,57 @@ module.exports = app => {
 
   // Get route for specific store by ID
   app.get("/store/:userid/:id", (req, res) => {
-      db.Store.findOne({
+      db.User.findOne({
         where: {
-          id: req.params.id
-        },
-        include: [db.Product],
-        order: [
-            [db.Product, "popularity", "DESC"]
-        ]
-      }).then(result => {
-        let data = {
-          userid: req.params.userid,
-          id: result.id,
-          font: result.font,
-          background_image: result.background_image,
-          store_name: result.store_name,
-          tagline: result.tagline,
-          about: result.about,
-          about_image: result.about_image,
-          address: result.address,
-          font_color: result.font_color,
-          body_color: result.body_color,
-          footer_color: result.footer_color,
-          accent_color: result.accent_color
-        };
-        if (result.Products.length > 0) {
-        data.hasProducts = true;
-        let products = [];
-        for (let i = 0; i < 3; i++) {
-          let info = {
-            userid: req.params.userid,
-            productid: result.Products[i].id,
-            image: result.Products[i].image,
-            name: result.Products[i].name
-          };
-          products.push(info);
+          id: req.params.userid
         }
-        data.products = products;
-      } else {
-        data.hasProducts = false;
-      };
-      res.render("storefront", data);
+      }).then(dbUser => {
+        let isSeller = dbUser.isSeller;
+        db.Store.findOne({
+          where: {
+            id: req.params.id
+          },
+          include: [db.Product],
+          order: [
+              [db.Product, "popularity", "DESC"]
+          ]
+        }).then(result => {
+          let data = {
+            isSeller: isSeller,
+            userid: req.params.userid,
+            id: result.id,
+            font: result.font,
+            background_image: result.background_image,
+            bg_scroll: result.bg_scroll,
+            store_name: result.store_name,
+            tagline: result.tagline,
+            about: result.about,
+            about_image: result.about_image,
+            about_scroll: result.about_scroll,
+            address: result.address,
+            font_color: result.font_color,
+            body_color: result.body_color,
+            footer_color: result.footer_color,
+            accent_color: result.accent_color
+          };
+          if (result.Products.length > 0) {
+          data.hasProducts = true;
+          let products = [];
+          for (let i = 0; i < 3; i++) {
+            let info = {
+              userid: req.params.userid,
+              productid: result.Products[i].id,
+              image: result.Products[i].image,
+              name: result.Products[i].name
+            };
+            products.push(info);
+          }
+          data.products = products;
+        } else {
+          data.hasProducts = false;
+        };
+        res.render("storefront", data);
+      });
     });
   });
 
@@ -122,21 +132,29 @@ module.exports = app => {
     });
   });
 
-  app.get("/contact/:userid/:id", (req, res) => {
-    db.Store.findOne({
+  app.get("/contact/:userid/:id", async (req, res) => {
+    db.User.findOne({
       where: {
-        id: req.params.id
+        id: req.params.userid
       }
-    }).then(result => {
-      res.render("contact", {
-        userid: req.params.userid,
-        id: result.id,
-        name: result.store_name,
-        address: result.address,
-        font: result.font,
-        font_color: result.font_color,
-        body_color: result.body_color,
-        accent_color: result.accent_color
+    }).then(dbUser => {
+      const isSeller = dbUser.isSeller;
+      db.Store.findOne({
+        where: {
+          id: req.params.id
+        }
+      }).then(result => {
+        res.render("contact", {
+          isSeller: isSeller,
+          userid: req.params.userid,
+          id: result.id,
+          name: result.store_name,
+          address: result.address,
+          font: result.font,
+          font_color: result.font_color,
+          body_color: result.body_color,
+          accent_color: result.accent_color
+        });
       });
     });
   });
@@ -182,6 +200,7 @@ module.exports = app => {
   });
 
   app.put("/api/store/:storeid", (req, res) => {
+    console.log(req.body);
     db.Store.update(req.body, {
       where: {
         id: req.params.storeid
@@ -190,4 +209,15 @@ module.exports = app => {
       res.json(result);
     });
   });
+
+  app.delete("/api/store/:storeid", (req, res) => {
+    db.Store.destroy({
+      where: {
+        id: req.params.storeid
+      }
+    }).then(response => {
+      res.json(response);
+    });
+  });
+
 };

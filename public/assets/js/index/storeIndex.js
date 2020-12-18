@@ -11,7 +11,8 @@ $("#storelogin").on("submit", event => {
         if (!response.isSeller) {
             alert("No store owner account on file. Please create a store account or proceed to the customer login page.");
         } else {
-            window.location = "/landing/" + response.id;
+            alert("Congratulations on creating your new store! Please proceed to the store editor.");
+            window.location = "/storeEditor/" + response.id;
         };
     });
 });

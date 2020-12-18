@@ -17,6 +17,6 @@ $("#storeform").on("submit", event => {
         data: storeInfo
     }).then(response => {
         console.log(response.id);
-        window.location = "/storeEditor/" + response.id;
+        window.location = "/";
     });
 });

@@ -4,26 +4,41 @@ module.exports = app => {
 
   // Get route for all stores and their products
   app.get("/landing/:userid", (req, res) => {
-      const userid = req.params.userid;
-      db.Store.findAll({
-        include: [db.Product],
-        order: [
-            [db.Product, "popularity", "DESC"]
-        ]
-      }).then(result => {
-        let data = [];
-        result.forEach(store => {
+    const userid = req.params.userid;
+      db.User.findOne({
+        where: {
+          id: userid
+        }
+      }).then(response => {
+        let isSeller = response.isSeller;
+        db.Store.findAll({
+          include: [db.Product, db.User],
+          order: [
+              [db.Product, "popularity", "DESC"]
+          ]
+        }).then(result => {
+          console.log(result);
+          let data = [];
+          result.forEach(store => {
+            let info = {
+              userid: userid,
+              id: store.id,
+              store: store.store_name,
+              image: store.Products[0].image 
+            };
+            data.push(info);
+          });
           let info = {
-            userid: userid,
-            id: store.id,
-            store: store.store_name,
-            image: store.Products[0].image 
+            isSeller: isSeller,
+            data: data,
+            userid: userid
           };
-          data.push(info);
-        });
-        res.render("landing", {
-          data: data,
-          userid: userid
+          if (result.length > 5) {
+            info.isFixed = false;
+          } else {
+            info.isFixed = true;
+          };
+          res.render("landing", info);
         });
       });
     });
@@ -39,49 +54,69 @@ module.exports = app => {
             [db.Product, "popularity", "DESC"]
         ]
       }).then(result => {
-        res.render("storefront", {
+        let data = {
           userid: req.params.userid,
           id: result.id,
           font: result.font,
           background_image: result.background_image,
           store_name: result.store_name,
-          product1Id: result.Products[0].id,
-          productImage1: result.Products[0].image,
-          productName1: result.Products[0].name,
-          product2Id: result.Products[1].id,
-          productImage2: result.Products[1].image,
-          productName2: result.Products[1].name,
-          product3Id: result.Products[2].id,
-          productImage3: result.Products[2].image,
-          productName3: result.Products[2].name,
+          tagline: result.tagline,
           about: result.about,
           about_image: result.about_image,
           address: result.address,
           font_color: result.font_color,
           body_color: result.body_color,
+          footer_color: result.footer_color,
           accent_color: result.accent_color
-        });
-      });
+        };
+        if (result.Products.length > 0) {
+        data.hasProducts = true;
+        let products = [];
+        for (let i = 0; i < 3; i++) {
+          let info = {
+            id: result.Products.id,
+            image: result.Products.image,
+            name: result.Products.name
+          };
+          products.push(info);
+        }
+        data.products = products;
+      } else {
+        data.hasProducts = false;
+      };
+      res.render("storefront", data);
+    });
   });
 
-  app.get("/storeEditor/:storeid", (req, res) => {
+  app.get("/storeEditor/:userid", (req, res) => {
     db.Store.findOne({
       where: {
-        id: req.params.storeid
+        UserId: req.params.userid
       },
       include: [db.Product]
     }).then(result => {
+      // res.json(result);
       let data = {
         userid: result.UserId,
         storeid: result.id,
         name: result.store_name
       };
-      if (result.Products.length > 1) {
+      if (result.Products.length > 0) {
         data.hasProducts = true;
-        data.products = result.Products;
+        let products = [];
+        result.Products.forEach(item => {
+          let info = {
+            id: item.id,
+            image: item.image,
+            name: item.name
+          };
+          products.push(info);
+        })
+        data.products = products;
       } else {
         data.hasProducts = false;
       };
+      console.log(data);
       res.render("storeEditor", data);
     });
   });

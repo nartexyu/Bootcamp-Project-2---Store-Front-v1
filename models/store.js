@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         body_color: {
             type: DataTypes.STRING,
-            defaultValue: "gray"
+            defaultValue: "black"
         },
         footer_color: {
             type: DataTypes.STRING,

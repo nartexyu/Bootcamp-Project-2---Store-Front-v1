@@ -11,7 +11,7 @@ $("#signUp").on("submit", event => {
     };
 
     $.post("/api/signup", userInfo).then(() => {
-        console.log("Success! Created new user.");
-        window.location.replace("/landing");
+        alert("Account created! Please login.");
+        window.location.replace("/");
     });
 });

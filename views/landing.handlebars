@@ -1,26 +1,19 @@
-<style>
-    footer {
-        background-color: black;
-        color: white;
-    }
-</style>
 
-</style>
 
- <a name="#"></a>
+<a name="#"></a>
 
     <header class="p-5 header">
         <nav class="row">
             <div class="col-4">
                 <ul class="nav">
                     <li class="nav-item">
-                    <a class="nav-link" href="/landing/{{ userid }}">Shop</a>
+                    <a class="nav-link a-customizations a-hover-customizations" href="/landing/{{ userid }}">Shop</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="">About</a>
+                    <a class="nav-link a-customizations a-hover-customizations" href="">About</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="">Contact</a>
+                    <a class="nav-link a-customizations a-hover-customizations" href="<!--default contact page-->">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -28,7 +21,7 @@
             <div class="col-4">
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link pt-0 pb-0 storeFront" href="/landing/{{ userid }}">Store Front</a>
+                        <a class="nav-link pt-0 pb-0 storeFront a-customizations a-hover-customizations" href="/landing/{{ userid }}">Store Front</a>
                     </li>
                 </ul>
             </div>
@@ -36,10 +29,15 @@
             <div class="col-4">
                 <ul class="nav justify-content-end">
                     <li class="nav-item">
-                    <a class="nav-link active" href="/">Login</a>
+                    {{#if isSeller}}
+                    <a class="nav-link active a-customizations a-hover-customizations" href="/storeEditor/{{ userid }}">Settings</a>
+                    {{/if}}
+                    {{#unless isSeller}}
+                    <a class="nav-link active a-customizations a-hover-customizations" href="/landing/{{ userid }}">Settings</a>
+                    {{/unless}}
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/cart/{{ userid }}">
+                    <a class="nav-link a-customizations a-hover-customizations" href="/cart/{{ userid }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z"/>
                         </svg>
@@ -50,7 +48,7 @@
         </nav>       
     </header>
 
-    <div class="p-5 text-center">
+    <div class="p-5 text-center align-items-center">
         <div class="row justify-content-center p-5">
             {{#each data}}
                 {{>product/store-block}}
@@ -58,7 +56,12 @@
         </div>
     </div>
 
-    <footer class="page-footer font-small p-5">
+    {{#if isFixed}}
+    <footer class="page-footer footer-color footer-fixed font-small p-5">
+    {{/if}}
+    {{#unless isFixed}}
+    <footer class="page-footer footer-color footer-static font-small p-5"></footer>
+    {{/unless}}
         <div class="container-fluid text-center text-md-left">
             <div class="row">
                 <div class="col-3"></div>
@@ -72,10 +75,10 @@
                     <div class="mb-md-0 text-right">
                         <ul class="list-unstyled">
                             <li>
-                                <a href="#">Back to Top</a>
+                                <a href="#" class="a-customizations a-hover-customizations">Back to Top</a>
                             </li>
                             <li>
-                                <a href="">Contact</a>
+                                <a href="<!--default contact page-->" class="a-customizations a-hover-customizations">Contact</a>
                             </li>
                         </ul>
                     </div>

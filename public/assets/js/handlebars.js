@@ -28,6 +28,17 @@ $(document).ready(() => {
             location.reload();
         });
     });
+
+    $(".edit-prod-delete").on("click", event => {
+        let itemid = $(event.currentTarget).data("productid");
+        $.ajax({
+            url: "/api/product/" + itemid,
+            method: "DELETE"
+        }).then(result => {
+            location.reload();
+        });
+    });
+
     let amount = 1;
 
     $("#add").on("click", () => {
@@ -167,7 +178,7 @@ $(document).ready(() => {
                 contentType: false,
             }).then(response => {
                 alert("Added product to your store!");
-                location.reload();
+                window.location = "/storeEditor/" + storeid;
             });
         });
     });

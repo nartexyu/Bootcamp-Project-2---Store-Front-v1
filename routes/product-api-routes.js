@@ -26,28 +26,28 @@ module.exports = app => {
           ],
           include: [db.Store]
       }).then(result => {
-        let data = {
-          userid: req.params.userid,
-          storeId: result[0].StoreId,
-          store: result[0].Store.store_name,
-          address: result[0].Store.address,
-          font: result[0].Store.font,
-          font_color: result[0].Store.font_color,
-          body_color: result[0].Store.body_color,
-          accent_color: result[0].Store.accent_color
-        };
-        let products = [];
-        result.forEach(product => {
-          let item = {
+          let data = {
             userid: req.params.userid,
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            image: product.image
+            storeId: result[0].StoreId,
+            store: result[0].Store.store_name,
+            address: result[0].Store.address,
+            font: result[0].Store.font,
+            font_color: result[0].Store.font_color,
+            body_color: result[0].Store.body_color,
+            accent_color: result[0].Store.accent_color
           };
-          products.push(item);
-        });
-        data.products = products;
+          let products = [];
+          result.forEach(product => {
+            let item = {
+              userid: req.params.userid,
+              id: product.id,
+              name: product.name,
+              price: product.price,
+              image: product.image
+            };
+            products.push(item);
+          });
+          data.products = products;
         res.render("shop", data);
       });
   });
@@ -72,13 +72,24 @@ module.exports = app => {
         font: result.Store.font,
         font_color: result.Store.font_color,
         body_color: result.Store.body_color,
-        accent: result.Store.accent_color
+        footer_color: result.footer_color,
+        accent_color: result.Store.accent_color
       });
     });
   });
 
   app.post("/api/product", (req, res) => {
     db.Product.create(req.body).then(result => {
+      res.json(result);
+    });
+  });
+
+  app.delete("/api/product/:productid", (req, res) => {
+    db.Product.destroy({
+      where: {
+        id: req.params.productid
+      }
+    }).then(result => {
       res.json(result);
     });
   });

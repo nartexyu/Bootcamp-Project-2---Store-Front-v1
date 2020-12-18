@@ -2,6 +2,11 @@
     space {
         margin-bottom: 100px;
     }
+
+    img {
+        width: 75px;
+        height: 75px;
+    }
 </style>
 
 <a name="#"></a>
@@ -62,6 +67,7 @@
             <div class="col-8">
               <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="list-store" role="tabpanel" aria-labelledby="list-home-list">
+
                     <form class="col-12 p-4" id="store-details-form">
                         <div class="form-group">
                           <label for="exampleFormControlInput1">Store Name</label>
@@ -242,7 +248,7 @@
 
                             {{#unless hasProducts}}
                                 <div class="row align-items-center">
-                                    <p>No items on file for this store</p>
+                                    <p class="col-12">No items on file for this store</p>
                                 </div>
                             {{/unless}}
                         <div class="text-right updateStatus">
@@ -256,7 +262,7 @@
         </div>
     </div>
 
-    <footer class="page-footer font-small p-5 footer-static footer-color">
+    <footer class="page-footer font-small p-5 footer-fixed footer-color">
         <div class="container-fluid text-center text-md-left">
             <div class="row">
                 <div class="col-3"></div>

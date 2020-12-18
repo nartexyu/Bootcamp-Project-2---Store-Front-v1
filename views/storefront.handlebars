@@ -4,12 +4,13 @@
         color: {{ body_color }};
     }
 
-    .nav, .nav-item, .nav-link, .button, footer, footer a {
+    .nav, .nav-item, .nav-link, #tagline {
         color: {{ font_color }};
     }
 
-    .button, footer {
+    .button, footer, footer a {
         background-color: {{ accent_color }};
+        color: {{ footer_color }};
     }
 
     .background {
@@ -30,13 +31,13 @@
             <div class="col-4">
                 <ul class="nav">
                     <li class="nav-item">
-                    <a class="nav-link" href="/landing/{{ userid }}">Shop</a>
+                    <a class="nav-link a-customizations a-hover-customizations" href="/landing/{{ userid }}">Shop</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#about">About</a>
+                    <a class="nav-link a-customizations a-hover-customizations" href="#about">About</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/contact/{{ userid }}/{{ id }}">Contact</a>
+                    <a class="nav-link a-customizations a-hover-customizations" href="/contact/{{ userid }}/{{ id }}">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -44,7 +45,7 @@
             <div class="col-4">
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link pt-0 pb-0 storeFront" href="/store/{{ userid }}/{{ id }}">{{ store_name }}</a>
+                        <a class="nav-link pt-0 pb-0 storeFront a-customizations a-hover-customizations" href="/store/{{ userid }}/{{ id }}">{{ store_name }}</a>
                     </li>
                 </ul>
             </div>
@@ -52,10 +53,10 @@
             <div class="col-4">
                 <ul class="nav justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/">Login</a>
+                        <a class="nav-link active a-customizations a-hover-customizations" href="/">Login</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/cart/{{ userid }}">
+                    <a class="nav-link a-customizations a-hover-customizations" href="/cart/{{ userid }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z"/>
                         </svg>
@@ -68,8 +69,8 @@
 
     <div class="background">
         <div class="m-0 text-center description">
-            <p class="m-0">{{ store_name }}</p>
-            <a href="/storeproducts/{{ userid }}/{{ id }}" class="button">shop products</a>
+            <p class="m-0" id="tagline">{{ tagline }}</p>
+            <a href="/storeproducts/{{ userid }}/{{ id }}" class="button button-customizations">Browse Collection</a>
         </div>
         
     </div>
@@ -78,30 +79,11 @@
         <div class="row p-5">
             <h1 class="col-12 pt-5 pb-2 text-center">Popular Items</h1>
             <h6 class="col-12 pb-5 text-center">These items have been viewed the most from this store</h6>
-             
-            <div class="col-4">
-                <figure class="text-center pop-item">
-                    <a href='/product/{{ userid }}/{{ product1Id }}' ><img src="{{ productImage1 }}" class="product" alt="popular item">
-                        <div class="pop-desc">{{ productName1 }}</div>
-                    </a>
-                </figure>
-            </div>
-            
-            <div class="col-4">
-                <figure class="text-center pop-item">
-                    <a href='/product/{{ userid }}/{{ product2Id }}' ><img src="{{ productImage2 }}" class="product" alt="popular item">
-                        <div class="pop-desc">{{ productName2 }}</div>
-                    </a>
-                </figure>
-            </div>
-        
-            <div class="col-4">
-                <figure class="text-center pop-item">
-                    <a href='/product/{{ userid }}/{{ product3Id }}' ><img src="{{ productImage3 }}" class="product" alt="popular item">
-                        <div class="pop-desc">{{ productName3 }}</div>
-                    </a>
-                </figure>
-            </div>
+            {{#if hasProducts}}
+                {{#each products}}
+                    {{> product/storefront-block}}
+                {{/each}}
+            {{/if}}
         </div>
     </div>
 
@@ -129,10 +111,10 @@
                     <div class="mb-md-0 text-right">
                         <ul class="list-unstyled">
                             <li>
-                                <a href="#">Back to Top</a>
+                                <a href="#" class="a-customizations a-hover-customizations">Back to Top</a>
                             </li>
                             <li>
-                                <a href="/contact/{{ id }}">Contact</a>
+                                <a href="/contact/{{ id }}" class="a-customizations a-hover-customizations">Contact</a>
                             </li>
                         </ul>
                     </div>

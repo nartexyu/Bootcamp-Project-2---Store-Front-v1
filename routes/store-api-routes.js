@@ -153,6 +153,7 @@ module.exports = app => {
           font: result.font,
           font_color: result.font_color,
           body_color: result.body_color,
+          footer_color: result.footer_color,
           accent_color: result.accent_color
         });
       });

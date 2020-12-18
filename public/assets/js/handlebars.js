@@ -170,7 +170,7 @@ $(document).ready(() => {
             description: $("#productDescription").val().trim(),
             StoreId: storeid
         };
-        if (!$("#prod-image-upload")[0].files){
+        if ($("#prod-image-upload")[0].files.exists()){
             $.ajax({
                 url: "/api/product",
                 method: "POST",

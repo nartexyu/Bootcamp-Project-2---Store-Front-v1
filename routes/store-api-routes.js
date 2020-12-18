@@ -19,7 +19,8 @@ module.exports = app => {
         }).then(result => {
           console.log(result);
           let data = [];
-          result.forEach(store => {
+          let openStores = result.filter(store => store.Products.length > 0);
+          openStores.forEach(store => {
             let info = {
               userid: userid,
               id: store.id,
@@ -74,9 +75,9 @@ module.exports = app => {
         let products = [];
         for (let i = 0; i < 3; i++) {
           let info = {
-            id: result.Products.id,
-            image: result.Products.image,
-            name: result.Products.name
+            id: result.Products[i].id,
+            image: result.Products[i].image,
+            name: result.Products[i].name
           };
           products.push(info);
         }

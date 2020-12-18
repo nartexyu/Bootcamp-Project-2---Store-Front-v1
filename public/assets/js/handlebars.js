@@ -171,7 +171,7 @@ $(document).ready(() => {
             StoreId: storeid
         };
         console.log($("#prod-image-upload")[0].files);
-        if (!$("#prod-image-upload")[0].files){
+        if ($("#prod-image-upload")[0].files.length === 0){
             $.ajax({
                 url: "/api/product",
                 method: "POST",

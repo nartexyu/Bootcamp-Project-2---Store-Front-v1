@@ -5,9 +5,14 @@ $("#storelogin").on("submit", event => {
         password: $("#passwordInput").val().trim()
     };
     if (!userInfo.email || !userInfo.password) {
-        return;
+        alert("Please enter your email and password");
     };
     $.post("/api/login", userInfo).then(response => {
-        window.location = "/landing/" + response.id;
+        if (!response.isSeller) {
+            alert("No store owner account on file. Please create a store account or proceed to the customer login page.");
+        } else {
+            alert("Congratulations on creating your new store! Please proceed to the store editor.");
+            window.location = "/storeEditor/" + response.id;
+        };
     });
 });

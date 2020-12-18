@@ -4,7 +4,7 @@
         color: {{ body_color }};
     }
 
-    .nav, .nav-item, .nav-link, footer, footer a {
+    .nav, .nav-item, .nav-link {
         color: {{ font_color }};
     }
 
@@ -17,8 +17,9 @@
         cursor: pointer;
     }
 
-    footer {
+    footer, .custom-color {
         background-color: {{ accent_color }};
+        color: {{ footer_color }};
     }
 </style>
 
@@ -50,9 +51,16 @@
 
             <div class="col-4">
                 <ul class="nav justify-content-end">
+                    {{#if isSeller}}
                     <li class="nav-item">
-                    <a class="nav-link active a-customizations a-hover-customizations" href="/">Login</a>
+                    <a class="nav-link active a-customizations a-hover-customizations" href="/storeEditor/{{ userid }}">Settings</a>
                     </li>
+                    {{/if}}
+                    {{#unless isSeller}}
+                    <li class="nav-item"></li>
+                        <a class="nav-link active a-customizations a-hover-customizations" href="">Account</a>
+                    </li>
+                    {{/unless}}
                     <li class="nav-item">
                     <a class="nav-link a-customizations a-hover-customizations" href="/cart/{{ userid }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
@@ -89,10 +97,10 @@
                     <div class="mb-md-0 text-right">
                         <ul class="list-unstyled">
                             <li>
-                                <a class="a-customizations a-hover-customizations" href="#">Back to Top</a>
+                                <a class="a-customizations a-hover-customizations custom-color" href="#">Back to Top</a>
                             </li>
                             <li>
-                                <a class="a-customizations a-hover-customizations" href="/contact/{{ userid }}/{{ storeId }}">Contact</a>
+                                <a class="a-customizations a-hover-customizations custom-color" href="/contact/{{ userid }}/{{ storeId }}">Contact</a>
                             </li>
                         </ul>
                     </div>

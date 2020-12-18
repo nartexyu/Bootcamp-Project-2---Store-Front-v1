@@ -6,9 +6,16 @@ module.exports = app => {
         // res.sendFile(path.join(__dirname, "../public/index/index.html"));
     });
 
-    app.get("/signup", (req, res) => {
+    app.get("/csignup", (req, res) => {
         res.sendFile(path.join(__dirname, "../public/cSignUp.html"));
     });
+
+    app.get("/osignup", (req, res) => {
+        res.sendFile(path.join(__dirname, "../public/oSignUp.html"));
+    });
+    app.get("/osignin", (req, res) => {
+        res.sendFile(path.join(__dirname, "../public/storeIndex.html"));
+    })
 
     app.get("/", (req, res) => {
         res.sendFile(path.join(__dirname, "../public/index.html"));

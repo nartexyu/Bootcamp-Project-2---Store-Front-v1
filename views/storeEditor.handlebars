@@ -38,7 +38,7 @@
             <div class="col-4">
                 <ul class="nav justify-content-end">
                     <li class="nav-item">
-                    <a class="nav-link a-customizations a-hover-customizations" href="/">Login</a>
+                    <a class="nav-link a-customizations a-hover-customizations" href="">Settings</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link a-customizations a-hover-customizations" href="/cart/{{ userid }}">
@@ -60,8 +60,9 @@
                 <a class="list-group-item list-group-item-action" id="list-font-list" data-toggle="list" href="#list-font" role="tab" aria-controls="font">Font</a>
                 <a class="list-group-item list-group-item-action" id="list-colors-list" data-toggle="list" href="#list-colors" role="tab" aria-controls="colors">Colors</a>
                 <a class="list-group-item list-group-item-action" id="list-background-list" data-toggle="list" href="#list-background" role="tab" aria-controls="background">Background Images</a>
-                <a class="list-group-item list-group-item-action border-bottom" id="list-products-list" data-toggle="list" href="#list-product-upload" role="tab" aria-controls="productUpload">Product Upload</a>
-                <a class="list-group-item list-group-item-action border-bottom" id="list-products-list" data-toggle="list" href="#list-products" role="tab" aria-controls="products">Products</a>
+                <a class="list-group-item list-group-item-action" id="list-products-list" data-toggle="list" href="#list-product-upload" role="tab" aria-controls="productUpload">Product Upload</a>
+                <a class="list-group-item list-group-item-action" id="list-products-list" data-toggle="list" href="#list-products" role="tab" aria-controls="products">Products</a>
+                <a class="list-group-item list-group-item-action border-bottom" id="list-delete-list" data-toggle="list" href="#list-delete" role="tab" aria-controls="products">Delete Store</a>
               </div>
             </div>
             <div class="col-8">
@@ -90,7 +91,7 @@
                         </div>
                         
                         <div class="text-right">
-                            <button type="submit" class="btn button-color">Submit</button>
+                            <button type="submit" class="btn button-color">Update</button>
                         </div>
 
                         <div class="text-right updateStatus">
@@ -105,11 +106,12 @@
                         <div class="input-group mb-3">
                             <select class="custom-select" id="font-select">
                               <option selected>Choose...</option>
-                              <option value="helvetica neue" style="font-family: 'helvetica neue';">Helvetica Neue</option>
-                              <option value="Bungee" style="font-family: 'Bungee', cursive;">Bungee</option>
-                              <option value="IBM Plex Sans" style="font-family: 'IBM Plex Sans', sans-serif;">IBM Plex Sans</option>
-                              <option value="Julius Sans One" style="font-family: 'Julius Sans One', sans-serif;">Julius Sans One</option>
-                              <option value="Lora" style="font-family: 'Lora', serif;">Lora</option>
+                              <option class="helvetica" value="helvetica neue">Helvetica Neue</option>
+                              <option class="ibm" value="IBM Plex Sans">IBM Plex Sans</option>
+                              <option class="julius" value="Julius Sans One">Julius Sans One</option>
+                              <option class="lora" value="Lora">Lora</option>
+                              <option class="bungee" value="Bungee">Bungee</option>
+                              <option class="creepster" value="Creepster">Creepster</option>
                             </select>
 
                             <div class="input-group-append">
@@ -133,7 +135,7 @@
                         </div>
 
                         <div class="text-right">
-                            <button type="submit" class="btn button-color">Submit</button>
+                            <button type="submit" class="btn button-color">Update</button>
                         </div>
 
                         <div class="text-right updateStatus">
@@ -150,7 +152,7 @@
                         </div>
 
                         <div class="text-right">
-                            <button type="submit" class="btn button-color">Submit</button>
+                            <button type="submit" class="btn button-color">Update</button>
                         </div>
 
                         <div class="text-right updateStatus">
@@ -172,8 +174,20 @@
                             </div>
                         </div>
 
+                        <label for="exampleFormControlInput1">Scroll Behavior</label>
+                        <div class="input-group mb-3">
+                            <select class="custom-select" id="bg-scroll">
+                              <option selected>Choose...</option>
+                              <option value="scroll">Scroll</option>
+                              <option value="fixed">Fixed</option>
+                            </select>
+                            <div class="input-group-append">
+                                <label class="input-group-text" for="inputGroupSelect02">Options</label>
+                            </div>
+                        </div>
+
                         <label for="exampleFormControlInput1">About Image</label>
-                        <div class="input-group">
+                        <div class="input-group mb-3">
                             <div class="custom-file">
                               <input type="file" class="custom-file-input" id="about-image" aria-describedby="inputGroupFileAddon04">
                               <label class="custom-file-label" for="about-image" id="about-edit-name">Choose file</label>
@@ -181,6 +195,21 @@
                             <div class="input-group-append">
                               <button class="btn btn-outline-secondary button-color" type="button" id="about-image-upload">Upload</button>
                             </div>
+                        </div>
+
+                        <label for="exampleFormControlInput1">Scroll Behavior</label>
+                        <div class="input-group mb-3">
+                            <select class="custom-select" id="about-scroll">
+                              <option selected>Choose...</option>
+                              <option value="scroll">Scroll</option>
+                              <option value="fixed">Fixed</option>
+                            </select>
+                            <div class="input-group-append">
+                                <label class="input-group-text" for="inputGroupSelect02">Options</label>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn button-color" id="scroll-submit">Update</button>
                         </div>
 
                         <div class="text-right updateStatus">
@@ -223,7 +252,7 @@
                         </div>
 
                         <div class="text-right">
-                            <button type="submit" class="btn button-color">Submit</button>
+                            <button type="submit" class="btn button-color">Update</button>
                         </div>
 
                         <div class="text-right updateStatus">
@@ -256,6 +285,20 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="tab-pane fade" id="list-delete" role="tabpanel" aria-labelledby="list-delete-list">
+                    <form class="col-12 p-4">    
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Are you sure you want to delete your store?</label>
+                        </div>
+                        <div class="text-left">
+                            <button type="submit" class="btn btn-danger delete-store" data-storeid="{{ storeid }}">Delete</button>
+                        </div>
+                        <div class="text-right updateStatus">
+                        </div>
+                    </form>
+                </div>
+
               </div>
             </div>
           </div>

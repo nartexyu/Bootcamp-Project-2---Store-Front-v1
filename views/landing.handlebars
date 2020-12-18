@@ -13,7 +13,7 @@
                     <a class="nav-link a-customizations a-hover-customizations" href="">About</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link a-customizations a-hover-customizations" href="<!--default contact page-->">Contact</a>
+                    <a class="nav-link a-customizations a-hover-customizations" href="">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -28,14 +28,16 @@
 
             <div class="col-4">
                 <ul class="nav justify-content-end">
-                    <li class="nav-item">
                     {{#if isSeller}}
-                    <a class="nav-link active a-customizations a-hover-customizations" href="/storeEditor/{{ userid }}">Settings</a>
+                    <li class="nav-item">
+                        <a class="nav-link active a-customizations a-hover-customizations" href="/storeEditor/{{ userid }}">Settings</a>
+                    </li>
                     {{/if}}
                     {{#unless isSeller}}
-                    <a class="nav-link active a-customizations a-hover-customizations" href="/landing/{{ userid }}">Settings</a>
-                    {{/unless}}
+                    <li class="nav-item"></li>
+                        <a class="nav-link active a-customizations a-hover-customizations" href="">Account</a>
                     </li>
+                    {{/unless}}
                     <li class="nav-item">
                     <a class="nav-link a-customizations a-hover-customizations" href="/cart/{{ userid }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">

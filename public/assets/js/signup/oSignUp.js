@@ -16,7 +16,7 @@ $("#storeform").on("submit", event => {
         type: "POST",
         data: storeInfo
     }).then(response => {
-        console.log(response.id);
-        window.location = "/";
+        alert("Account created! Please login.");
+        window.location = "/osignin";
     });
 });

@@ -17,7 +17,6 @@ module.exports = app => {
               [db.Product, "popularity", "DESC"]
           ]
         }).then(result => {
-          console.log(result);
           let data = [];
           let openStores = result.filter(store => store.Products.length > 0);
           openStores.forEach(store => {

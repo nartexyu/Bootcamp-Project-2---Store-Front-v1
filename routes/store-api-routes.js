@@ -79,9 +79,9 @@ module.exports = app => {
             accent_color: result.accent_color
           };
           if (result.Products.length > 0) {
-          data.hasProducts = true;
-          let products = [];
-          for (let i = 0; i < 3; i++) {
+            data.hasProducts = true;
+            let products = [];
+            for (let i = 0; i < 3; i++) {
             let info = {
               userid: req.params.userid,
               productid: result.Products[i].id,

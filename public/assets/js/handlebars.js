@@ -170,27 +170,32 @@ $(document).ready(() => {
             description: $("#productDescription").val().trim(),
             StoreId: storeid
         };
-        const files = $("#prod-image-upload")[0].files;
-        let fd = new FormData();
-        fd.append("file", files[0]);
-        $.ajax({
-            url: "/api/product",
-            method: "POST",
-            data: info
-        }).then(result => {
-            let productid = result.id;
+        if (!$("#prod-image-upload")[0].files){
+            alert("Added product to your store!");
+            location.reload();
+        } else {
+            const files = $("#prod-image-upload")[0].files;
+            let fd = new FormData();
+            fd.append("file", files[0]);
             $.ajax({
-                url: "/upload/prod-image/" + productid,
-                type: "POST",
-                data: fd,
-                enctype: "multipart/form-data",
-                processData: false,
-                contentType: false,
-            }).then(response => {
-                alert("Added product to your store!");
-                location.reload();
+                url: "/api/product",
+                method: "POST",
+                data: info
+            }).then(result => {
+                let productid = result.id;
+                $.ajax({
+                    url: "/upload/prod-image/" + productid,
+                    type: "POST",
+                    data: fd,
+                    enctype: "multipart/form-data",
+                    processData: false,
+                    contentType: false,
+                }).then(response => {
+                    alert("Added product to your store!");
+                    location.reload();
+                });
             });
-        });
+        };
     });
 
     $(".delete-store").on("click", event => {

@@ -171,8 +171,14 @@ $(document).ready(() => {
             StoreId: storeid
         };
         if (!$("#prod-image-upload")[0].files){
-            alert("Added product to your store!");
-            location.reload();
+            $.ajax({
+                url: "/api/product",
+                method: "POST",
+                data: info
+            }).then(result => {
+                alert("Added product to your store!");
+                location.reload();
+            });
         } else {
             const files = $("#prod-image-upload")[0].files;
             let fd = new FormData();

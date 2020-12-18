@@ -97,7 +97,7 @@ $(document).ready(() => {
             info.font = $("#font-select").val();
         };
         if ($("#headerFontColor").val()) {
-            info.dont_color = $("#headerFontColor").val().trim();
+            info.font_color = $("#headerFontColor").val().trim();
         };
         if ($("#bodyFontColor").val()) {
             info.body_color = $("#bodyFontColor").val().trim();

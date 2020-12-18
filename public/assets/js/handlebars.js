@@ -178,7 +178,7 @@ $(document).ready(() => {
                 contentType: false,
             }).then(response => {
                 alert("Added product to your store!");
-                window.location = "/storeEditor/" + storeid;
+                location.reload();
             });
         });
     });

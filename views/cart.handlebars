@@ -60,9 +60,11 @@
         </div>
         
         <hr class="m-0">
+        {{#if hasItems}}
             {{#each cart}}
                 {{>product/cart-block}}
             {{/each}}
+        {{/if}}
         <div class="row align-items-center p-3">
             <div class="col-12">
                 <h5 class="text-right">Subtotal: ${{ subtotal }}</h5>

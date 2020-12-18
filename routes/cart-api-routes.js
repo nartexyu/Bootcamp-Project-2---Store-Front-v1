@@ -12,30 +12,37 @@ module.exports = app => {
                 all: true
             }
         }).then(result => {
-            let data = [];
-            result.forEach(item => {
-                let cart = {
-                    cartid: item.id,
-                    productid: item.ProductId,
-                    quantity: item.quantity,
-                    image: item.Product.image,
-                    name: item.Product.name,
-                    price: item.Product.price
-                };
-                cart.cost = cart.quantity * cart.price;
-                data.push(cart);
-            });
-            let subtotal;
-            if (data.length > 1) {
-                subtotal = data.reduce((a, b) => a.cost + b.cost);
-            } else {
-                subtotal = data[0].cost;
+            let toSend = {
+                userid: req.params.userid
             };
-            res.render("cart", {
-                userid: req.params.userid,
-                subtotal: subtotal,
-                cart: data
-            });
+            if (result.length > 0) {
+                toSend.hasItems = true;
+                let data = [];
+                result.forEach(item => {
+                    let cart = {
+                        cartid: item.id,
+                        productid: item.ProductId,
+                        quantity: item.quantity,
+                        image: item.Product.image,
+                        name: item.Product.name,
+                        price: item.Product.price
+                    };
+                    cart.cost = cart.quantity * cart.price;
+                    data.push(cart);
+                });
+                toSend.cart = data;
+                let subtotal;
+                if (data.length > 1) {
+                    subtotal = data.reduce((a, b) => a.cost + b.cost).toFixed(2);
+                } else {
+                    subtotal = data[0].cost;
+                };
+                toSend.subtotal = subtotal;
+            } else {
+                toSend.hasItems = false;
+                toSend.subtotal = 0.00;
+            };
+            res.render("cart", toSend);
         });
     });
 

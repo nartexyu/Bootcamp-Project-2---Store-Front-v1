@@ -75,7 +75,8 @@ module.exports = app => {
         let products = [];
         for (let i = 0; i < 3; i++) {
           let info = {
-            id: result.Products[i].id,
+            userid: req.params.userid,
+            productid: result.Products[i].id,
             image: result.Products[i].image,
             name: result.Products[i].name
           };

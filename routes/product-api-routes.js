@@ -34,6 +34,7 @@ module.exports = app => {
             font: result[0].Store.font,
             font_color: result[0].Store.font_color,
             body_color: result[0].Store.body_color,
+            footer_color: result[0].Store.footer_color,
             accent_color: result[0].Store.accent_color
           };
           let products = [];
@@ -72,7 +73,7 @@ module.exports = app => {
         font: result.Store.font,
         font_color: result.Store.font_color,
         body_color: result.Store.body_color,
-        footer_color: result.footer_color,
+        footer_color: result.Store.footer_color,
         accent_color: result.Store.accent_color
       });
     });

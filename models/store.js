@@ -58,7 +58,8 @@ module.exports = (sequelize, DataTypes) => {
         Store.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false
-            }
+            },
+            onDelete: 'cascade'
         });
     };
     return Store;

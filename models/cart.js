@@ -9,12 +9,14 @@ module.exports = (sequelize, DataTypes) => {
         Cart.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false
-            }
+            },
+            onDelete: 'cascade'
         });
         Cart.belongsTo(models.Product, {
             foreignKey: {
                 allowNull: false
-            }
+            },
+            onDelete: 'cascade'
         });
     };
     return Cart;

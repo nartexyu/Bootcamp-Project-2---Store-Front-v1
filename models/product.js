@@ -6,15 +6,15 @@ module.exports = (sequelize, DataTypes) => {
         },
         price: {
             type: DataTypes.DECIMAL (10, 2),
-            allowNull: false
+            defaultValue: 0.00
         },
         description: {
             type: DataTypes.TEXT,
-            allowNull: false
+            defaultValue: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum assumenda fuga consectetur libero doloremque nobis dolor deleniti distinctio sequi. Laudantium cumque a ducimus suscipit libero distinctio nam quas enim repellendus."
         },
         stock: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            defaultValue: 1
         },
         popularity: {
             type: DataTypes.INTEGER,
@@ -32,14 +32,7 @@ module.exports = (sequelize, DataTypes) => {
             },
             onDelete: 'cascade'
         });
-        // Product.belongsTo(models.User, {
-        //     foreignKey: {
-        //         allowNull: true
-        //     }
-        // });
-        Product.hasMany(models.Cart, {
-            onDelete: "cascade"
-        });
+        Product.hasMany(models.Cart);
     };
     return Product;
 };

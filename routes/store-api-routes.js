@@ -82,22 +82,24 @@ module.exports = app => {
             data.hasProducts = true;
             let products = [];
             for (let i = 0; i < 3; i++) {
-            let info = {
-              userid: req.params.userid,
-              productid: result.Products[i].id,
-              image: result.Products[i].image,
-              name: result.Products[i].name
+              if (result.Products[i]) {
+                let info = {
+                  userid: req.params.userid,
+                  productid: result.Products[i].id,
+                  image: result.Products[i].image,
+                  name: result.Products[i].name
+                };
+                products.push(info);
+              };
             };
-            products.push(info);
-          }
-          data.products = products;
-        } else {
-          data.hasProducts = false;
-        };
-        res.render("storefront", data);
+            data.products = products;
+          } else {
+            data.hasProducts = false;
+          };
+          res.render("storefront", data);
+        });
       });
     });
-  });
 
   app.get("/storeEditor/:userid", (req, res) => {
     db.Store.findOne({

@@ -1,5 +1,4 @@
 const db = require("../models");
-const cart = require("../models/cart");
 
 module.exports = app => {
 
@@ -74,4 +73,4 @@ module.exports = app => {
         });
     });
 
-}
+};

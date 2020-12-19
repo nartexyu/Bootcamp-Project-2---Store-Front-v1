@@ -2,19 +2,6 @@ const db = require("../models");
 
 module.exports = app => {
 
-  // app.post("/api/product", (req, res) => {
-  //     db.Product.create({
-  //       name: req.body.name,
-  //       price: req.body.price,
-  //       description: req.body.description,
-  //       stock: req.body.stock,
-  //       image: req.body.image,
-  //       StoreId: req.body.StoreId
-  //     }).then(result => {
-  //       res.json(result);
-  //     });
-  // });
-
   // Get route for all products and their parent store
   app.get("/storeproducts/:userid/:storeId", (req, res) => {
       db.User.findOne({
@@ -110,39 +97,5 @@ module.exports = app => {
       res.json(result);
     });
   });
-
-  // app.put("/api/cart", (req, res) => {
-  //   db.Product.update(
-  //     {UserId: req.body.userid},
-  //     {where: {
-  //       id: req.body.productid
-  //     }
-  //   }).then(result => {
-  //     res.json(result);
-  //   });
-  // });
-
-  // app.get("/checkout/:userid", (req, res) => {
-  //   db.Product.findAll({
-  //     where: {
-  //       UserId: req.params.userid
-  //     }
-  //   }).then(result => {
-  //     let productInfo = [];
-  //     result.forEach(product => {
-  //       let info = {
-  //         id: product.id,
-  //         image: product.image,
-  //         name: product.name,
-  //         price: product.price,
-  //       }
-  //       productInfo.push(info);
-  //     })
-  //     res.render("cart", {
-  //       userid: req.params.userid,
-  //       products: productInfo
-  //     });
-  //   });
-  // });
 
 };

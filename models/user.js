@@ -22,23 +22,14 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        cart: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
         isSeller: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
         }
     });
     User.associate = models => {
-        User.hasOne(models.Store, {
-            onDelete: "cascade"
-        });
-        // User.hasMany(models.Product);
-        User.hasMany(models.Cart, {
-            onDelete: "cascade"
-        });
+        User.hasOne(models.Store);
+        User.hasMany(models.Cart);
     };
     User.prototype.validPassword = function(password) {
         return bcrypt.compareSync(password, this.password);

@@ -54,14 +54,13 @@ module.exports = app => {
     });
 
     app.post("/api/cart", (req, res) => {
-        db.Product.increment('popularity').then(response => {
-            db.Cart.create({
-                quantity: req.body.quantity,
-                UserId: req.body.userid,
-                ProductId: req.body.productid
-            }).then(result => {
-                res.json(result);
-            });
+        db.Product.increment({popularity: 1}, { where: { id: req.body.productid }});
+        db.Cart.create({
+            quantity: req.body.quantity,
+            UserId: req.body.userid,
+            ProductId: req.body.productid
+        }).then(result => {
+            res.json(result);
         });
     });
 

@@ -91,6 +91,7 @@
                     <p>{{ description }}</p>
                 </div>
 
+                {{#if inStock}}
                 <div class="row pb-3">
                     <div class="input-group">
                         <input type="text" class="form-control text-center" id="prod-quantity" value="1" aria-label="Recipient's username with two button addons">
@@ -108,8 +109,14 @@
                 </div>
 
                 <div class="row pt-3">
-                    <button type="button" class="btn btn-lg border button-color" id="prod-cart" data-userid="{{ userid }}" data-productid="{{ productid }}">Add to Cart</button>
+                    <button type="button" class="btn btn-lg border button-color" id="prod-cart" data-userid="{{ userid }}" data-productid="{{ productid }}" data-stock="{{ stock }}">Add to Cart</button>
                 </div>
+                {{/if}}
+                {{#unless inStock}}
+                <div class="row">
+                    <p class="text-muted">This item is currently out of stock.</p>
+                </div>
+                {{/unless}}
 
             </div>
         </div>

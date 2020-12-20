@@ -54,7 +54,7 @@ module.exports = app => {
     });
 
     app.post("/api/cart", (req, res) => {
-        db.Product.increment('popularity', { by: 1 });
+        db.Product.increment('popularity');
         db.Cart.create({
             quantity: req.body.quantity,
             UserId: req.body.userid,

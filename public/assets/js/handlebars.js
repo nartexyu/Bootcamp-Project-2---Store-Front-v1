@@ -1,14 +1,16 @@
 $(document).ready(() => {
 
     $("#prod-cart").on("click", event => {
+        let quantity = parseInt($("#prod-quantity").val());
+        let stock = parseInt($(event.currentTarget).data("stock"));
+        if (stock < quantity) {
+            alert(`Sorry, only ${stock} of this item left in stock.`);
+            return;
+        };
         let data = {
             userid: $(event.currentTarget).data("userid"),
-            productid: $(event.currentTarget).data("productid")
-        };
-        if ($("#prod-quantity").val()) {
-            data.quantity = parseInt($("#prod-quantity").val());
-        } else {
-            data.quantity = 1;
+            productid: $(event.currentTarget).data("productid"),
+            quantity: quantity
         };
         $.ajax({
             url: "/api/cart",

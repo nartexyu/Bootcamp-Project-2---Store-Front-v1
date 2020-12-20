@@ -61,6 +61,12 @@ module.exports = app => {
         },
         include: [db.Store]
       }).then(result => {
+        let inStock;
+        if (result.stock > 0) {
+          inStock = true;
+        } else {
+          inStock = false;
+        };
         res.render("product", {
           isSeller: isSeller,
           userid: req.params.userid,
@@ -69,6 +75,8 @@ module.exports = app => {
           store: result.Store.store_name,
           image: result.image,
           name: result.name,
+          inStock: inStock,
+          stock: result.stock,
           price: result.price,
           description: result.description,
           address: result.Store.address,

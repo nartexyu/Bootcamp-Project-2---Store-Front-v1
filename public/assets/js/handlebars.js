@@ -31,6 +31,27 @@ $(document).ready(() => {
         });
     });
 
+    $("#checkout").on('click', event => {
+        let data = [];
+        $(".prod-info").each(function() {
+            let info = {
+                quantity: $(this).data("quantity"),
+                productid: $(this).data("productid"),
+                cartid: $(this).data("cartid")
+            };
+            data.push(info);
+        });
+        let toSend = { data: data };
+        $.ajax({
+            url: "/checkout",
+            method: "PUT",
+            data: toSend
+        }).then(result => {
+            alert("Enjoy your purchases!");
+            window.location = "/landing/" + $(event.currentTarget).data("userid");
+        });
+    });
+
     $(".edit-prod-delete").on("click", event => {
         let itemid = $(event.currentTarget).data("productid");
         $.ajax({

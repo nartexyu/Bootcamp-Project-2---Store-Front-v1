@@ -96,6 +96,24 @@ module.exports = app => {
     });
   });
 
+  app.put("/checkout", (req, res) => {
+    req.body.data.forEach(info => {
+      let quantity = parseInt(info.quantity) * -1;
+      db.Product.increment({stock: quantity}, {
+        where: {
+          id: info.productid
+        }
+      });
+      db.Cart.destroy({
+        where: {
+          id: info.cartid
+        }
+      });
+    }).then(result => {
+      res.json(result);
+    });
+  });
+
   app.delete("/api/product/:productid", (req, res) => {
     db.Product.destroy({
       where: {

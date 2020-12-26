@@ -38,19 +38,19 @@ module.exports = (sequelize, DataTypes) => {
         },
         font_color: {
             type: DataTypes.STRING,
-            defaultValue: "black"
+            defaultValue: "#000000"
         },
         body_color: {
             type: DataTypes.STRING,
-            defaultValue: "black"
+            defaultValue: "#000000"
         },
         footer_color: {
             type: DataTypes.STRING,
-            defaultValue: "white"
+            defaultValue: "#ffffff"
         },
         accent_color: {
             type: DataTypes.STRING,
-            defaultValue: "black"
+            defaultValue: "#000000"
         }
     });
     Store.associate = models => {

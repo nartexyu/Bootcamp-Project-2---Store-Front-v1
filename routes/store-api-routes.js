@@ -108,11 +108,14 @@ module.exports = app => {
       },
       include: [db.Product]
     }).then(result => {
-      // res.json(result);
       let data = {
         userid: result.UserId,
         storeid: result.id,
-        name: result.store_name
+        name: result.store_name,
+        header_font_color: result.font_color,
+        body_font_color: result.body_color,
+        footer_font_color: result.footer_color,
+        accent_color: result.accent_color
       };
       if (result.Products.length > 0) {
         data.hasProducts = true;

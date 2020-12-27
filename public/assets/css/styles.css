@@ -40,6 +40,10 @@ header {
     text-decoration: none;
 }
 
+.color-form:hover {
+	cursor: pointer;
+}
+
 /* Font styles */
 .helvetica {
 	font-family: "Helvetica Neue";
